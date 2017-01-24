@@ -9,7 +9,7 @@
 
 Welcome to crawl_trulia Documentation
 ===============================================================================
-This is just a example project for demonstration purpose.
+This is a small project provide url route, html parse tools to crawl www.trulia.com.
 
 
 **Quick Links**
