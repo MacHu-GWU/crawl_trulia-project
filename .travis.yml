@@ -7,6 +7,6 @@ python:
 install:
   - pip install . # Install it self
   - pip install dataIO
-  - pip install crawllib
+  - pip install crawlib
   - pip install --upgrade pytest # Upgrade pytest to lastest
 script: py.test
