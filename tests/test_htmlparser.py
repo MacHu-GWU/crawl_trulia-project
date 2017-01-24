@@ -39,7 +39,7 @@ def get_testdata():
             "testdata", "%s.html" % address.replace(" ", "-"))
         if not os.path.exists(filename):
             url = urlencoder.by_address_and_zipcode(address, zipcode)
-            html = spider.html_with_encoding(url=url)
+            html = spider.get_html(url=url)
             textfile.write(html, filename)
 
 get_testdata()
