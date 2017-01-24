@@ -1,0 +1,2317 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQYAUF5WGwYHVlNQAwk="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(14),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,-1!==o.indexOf("dev")&&(s.dev=!0),-1!==o.indexOf("nr_dev")&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,o){try{d?d-=1:i("err",[o||new UncaughtException(t,e,n)])}catch(s){try{i("ierr",[s,(new Date).getTime(),!0])}catch(c){}}return"function"==typeof f?f.apply(this,a(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t){i("err",[t,(new Date).getTime()])}var i=t("handle"),a=t(15),s=t("ee"),c=t("loader"),f=window.onerror,u=!1,d=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),u=!0)}s.on("fn-start",function(t,e,n){u&&(d+=1)}),s.on("fn-err",function(t,e,n){u&&(this.thrown=!0,o(n))}),s.on("fn-end",function(){u&&!this.thrown&&d>0&&(d-=1)}),s.on("internal-error",function(t){i("ierr",[t,(new Date).getTime(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7);t("loader").features.stn=!0,t(6);var c=NREUM.o.EV;o.on("fn-start",function(t,e){var n=t[0];n instanceof c&&(this.bstStart=Date.now())}),o.on("fn-end",function(t,e){var n=t[0];n instanceof c&&i("bst",[n,e,this.bstStart,Date.now()])}),a.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),a.on("fn-end",function(t,e){i("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),s.on("fn-start",function(){this.bstStart=Date.now()}),s.on("fn-end",function(t,e){i("bstTimer",[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),o.on("pushState-start",function(t){this.time=Date.now(),this.startPath=location.pathname+location.hash}),o.on("pushState-end",function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.clearResourceTimings?window.performance.addEventListener("resourcetimingbufferfull",function(t){i("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1):window.performance.addEventListener("webkitresourcetimingbufferfull",function(t){i("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1)),document.addEventListener("scroll",r,!1),document.addEventListener("keypress",r,!1),document.addEventListener("click",r,!1)}},{}],5:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty("addEventListener");)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,["addEventListener","removeEventListener"],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(16)(a),c=t("gos");e.exports=a,o(window),"getPrototypeOf"in Object?(r(document),r(XMLHttpRequest.prototype)):XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&o(XMLHttpRequest.prototype),a.on("addEventListener-start",function(t,e){if(t[1]){var n=t[1];if("function"==typeof n){var r=c(n,"nr@wrapped",function(){return s(n,"fn-",null,n.name||"anonymous")});this.wrapped=t[1]=r}else"function"==typeof n.handleEvent&&s.inPlace(n,["handleEvent"],"fn-")}}),a.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{}],6:[function(t,e,n){var r=t("ee").get("history"),o=t(16)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,e,n){var r=t("ee").get("raf"),o=t(16)(r);e.exports=r,o.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(16)(i);e.exports=i,a.inPlace(window,["setTimeout","setImmediate"],"setTimer-"),a.inPlace(window,["setInterval"],"setInterval-"),a.inPlace(window,["clearTimeout","clearImmediate"],"clearTimeout-"),i.on("setInterval-start",r),i.on("setTimer-start",o)},{}],9:[function(t,e,n){function r(t,e){e=e||this;var n=a.context(e);e.readyState>3&&!n.resolved&&(n.resolved=!0,a.emit("xhr-resolved",[],e));try{f.inPlace(e,p,"fn-",o)}catch(r){}}function o(t,e){return e}function i(t,e){for(var n in t)e[n]=t[n];return e}var a=t("ee").get("xhr"),s=t(5),c=t(16),f=c(a),u=c(s),d=NREUM.o,l=d.XHR,p=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout","onreadystatechange"];e.exports=a,window.XMLHttpRequest=function(t){var e=new l(t);try{a.emit("new-xhr",[e],e),e.hasOwnProperty("addEventListener")&&u.inPlace(e,["addEventListener","removeEventListener"],"-",o),e.addEventListener("readystatechange",r,!1)}catch(n){try{a.emit("internal-error",[n])}catch(i){}}return e},i(l,XMLHttpRequest),XMLHttpRequest.prototype=l.prototype,f.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),a.on("send-xhr-start",r),a.on("open-xhr-start",r)},{}],10:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;l>r;r++)t.removeEventListener(d[r],this.listener,!1);if(!e.aborted){if(n.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var a=t.getResponseHeader("X-NewRelic-App-Data");a&&(e.cat=a.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,u.emit("xhr-done",[t],t),c("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return i(r)}function i(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}function a(t,e){var n=f(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var s=t("loader");if(s.xhrWrappable){var c=t("handle"),f=t(11),u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(13),m=window.XMLHttpRequest;s.features.xhr=!0,t(5),t(9),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,h&&(h>34||10>h)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),u.on("open-xhr-start",function(t){this.params={method:t[0]},a(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var a=i(r);a&&(n.txSize=a)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;l>s;s++)e.addEventListener(d[s],this.listener,!1)}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{}],11:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],12:[function(t,e,n){function r(t,e){return function(){o(t,[(new Date).getTime()].concat(a(arguments)),null,e)}}var o=t("handle"),i=t(14),a=t(15);"undefined"==typeof window.newrelic&&(newrelic=NREUM);var s=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit"],c=["addPageAction"],f="api-";i(s,function(t,e){newrelic[e]=r(f+e,"api")}),i(c,function(t,e){newrelic[e]=r(f+e)}),e.exports=newrelic,newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),o("err",[t,(new Date).getTime()])}},{}],13:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],14:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],15:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],16:[function(t,e,n){function r(t){return!(t&&"function"==typeof t&&t.apply&&!t[a])}var o=t("ee"),i=t(15),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t){function e(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(u){d([u,"",[r,a,o],s])}f(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(l){throw f(e+"err",[r,a,l],s),l}finally{f(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,u(t,nrWrapper),nrWrapper)}function n(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function f(e,n,r){if(!c){c=!0;try{t.emit(e,n,r)}catch(o){d([o,e,n,r])}c=!1}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){d([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function d(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),e.inPlace=n,e.flag=a,e}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?s(t,a,i):i()}function n(n,r,o){t&&t(n,r,o);for(var i=e(o),a=l(n),s=a.length,c=0;s>c;c++)a[c].apply(i,r);var u=f[v[n]];return u&&u.push([w,n,r,i]),i}function d(t,e){m[t]=l(t).concat(e)}function l(t){return m[t]||[]}function p(t){return u[t]=u[t]||o(n)}function h(t,e){c(t,function(t,n){e=e||"feature",v[n]=e,e in f||(f[e]=[])})}var m={},v={},w={on:d,emit:n,get:p,listeners:l,context:e,buffer:h};return w}function i(){return new r}var a="nr@context",s=t("gos"),c=t(14),f={},u={},d=e.exports=o();d.backlog=f},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!m++){var t=h.info=NREUM.info,e=u.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){c(l,function(e,n){t[e]||(t[e]=n)});var n="https"===d.split(":")[0]||t.sslForHttp;h.proto=n?"https://":"http://",s("mark",["onload",a()],null,"api");var r=u.createElement("script");r.src=h.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function o(){"complete"===u.readyState&&i()}function i(){s("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var s=t("handle"),c=t(14),f=window,u=f.document;NREUM.o={ST:setTimeout,XHR:f.XMLHttpRequest,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},t(12);var d=(""+location).split("?")[0],l={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-892.min.js"},p=window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent),h=e.exports={offset:a(),origin:d,features:{},xhrWrappable:p};u.addEventListener?(u.addEventListener("DOMContentLoaded",i,!1),f.addEventListener("load",r,!1)):(u.attachEvent("onreadystatechange",o),f.attachEvent("onload",r)),s("mark",["firstbyte",a()],null,"api");var m=0},{}]},{},["loader",2,10,4,3]);</script>
+
+
+<meta name="apple-itunes-app" content="app-id=288487321, app-argument=">
+
+
+<title>
+
+      824 S Ridgeley Dr, Los Angeles, CA 90036 | Trulia
+  </title>
+
+      <meta name="description" content="Sold 2112 sqft single-family home. Prepare for your home search with real estate comps and photos. View photos, get neighborhood trends, and see similar homes.">
+  
+
+  <meta name="keywords" content="Los Angeles, CA, 824 South Ridgeley Drive, Los Angeles, CA, trulia, CA real estate, real estate search">
+    <meta http-equiv="Content-Type" content="text/html5; charset=utf-8" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image:src" content="">
+
+<meta name="twitter:title" content="824 South Ridgeley Drive, Los Angeles, CA">
+<meta name="twitter:description" content="Check out this property: 
+      3bd, 1 full ba
+      2,112 sqft in
+      Miracle Mile
+      Los Angeles.
+       ">
+
+<meta name="twitter:domain" content="trulia.com">
+
+    
+    <meta property="og:image" content="http://static.trulia-cdn.com/images/logos/trulia-og-logo-200x200.png">
+    <meta property="og:image:width" content="200">
+    <meta property="og:image:height" content="200">
+  
+  
+  <meta property="fb:admins" content="5953837487">
+  
+  
+  <meta property="fb:app_id" content="183577541666001">
+  
+  
+  <meta property="og:title" content="824 South Ridgeley Drive, Los Angeles, CA | Trulia.com">
+  <meta property="og:description" content="Photos, maps, description for 824 South Ridgeley Drive, Los Angeles, CA. Search homes for sale, get school district and neighborhood info for Los Angeles, CA on Trulia—Delightfully Smart Real Estate Search.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Trulia Real Estate Search">
+  <meta property="og:url" content="http://www.trulia.com/homes/California/Los_Angeles/sold/3910533-824-S-Ridgeley-Dr-Los-Angeles-CA-90036">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://static.trulia-cdn.com/images/icons/apple-touch-icon-144x144.png">
+  
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://static.trulia-cdn.com/images/icons/apple-touch-icon-72x72.png">
+  
+  
+  
+
+
+
+  <link rel="stylesheet" type="text/css" href="http://css.trulia-cdn.com/css/I12_38/css/compiled/combo/lib-txl.css" >
+
+  <link rel="stylesheet" type="text/css" href="http://css.trulia-cdn.com/css/I12_38/css/compiled/combo/pdp_base.css" >
+
+
+  <style type="text/css">
+    #propertyCarousel .carousel { overflow: hidden; white-space: nowrap; }
+    #propertyCarousel .carousel .polaroid { width: 120px; min-height: 120px }
+    .visibleListingPositioning { position: relative }
+    .agentLeadFormContainer { height: 100%; max-height: 160px; overflow-y: scroll; overflow-x: hidden; }
+    .iconShield:before { display: inline-block; content: ''; width: 28px; height: 28px; vertical-align: middle; margin: 0 2px 2px 0; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAVFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAU4H24AAAAG3RSTlMAg/nTjQryGrstr3oDFV2hcEI54WmU9cTqU0jFSYa9AAAAwUlEQVQoz72SSQ6EIBBFVWRWBgcc/v3v2QEjGm3ddNJvRfFIKp+q4i+0L64ktvtu6EAABCsv9w1tO4Ed5jhtsqtxZ+IvUtylDi+yLZ9l8P4m03M2z8ELM82sj6Xa/8PEqpdr6UC0ozaW4x5GMkQWDYD4LbDOQQkSPKAaNgeT5YiEVM6ONbYmWUpEFF+UlmY7FwcqtRkZIFzsUXXnOaaUyIjijMcZdhlaeZa8eLRVdgdDOCZ5p7Mx4EAftmg1Swz/Ox+pcR6vJ/RfvwAAAABJRU5ErkJggg==); }
+
+    
+    .boxSpecialHighlight:hover {
+        -webkit-box-shadow: 0 0 5px #53b50a;
+        -moz-box-shadow: 0 0 5px #53b50a;
+        box-shadow: 0 0 5px #53b50a;
+        color:#53b50a;
+        cursor:pointer;
+    }
+    .boxSpecialHighlight {
+        color:#1885f0;
+    }
+
+  </style>
+
+  <!-- Discovery Property Cards -->
+  <style>
+    /* Use CSS to clip oversized images that currently get their aspect ratio skewed */
+    .imageContainerClipped {
+      width: 180px;
+      height: 135px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .imageContainerClipped img {
+      margin: 0px auto;
+      display: block;
+    }
+
+    .propertyPhotoCard {
+      width: 250px;
+      height: 352px;
+    }
+
+    .propertyPhotoCard.propertyPhotoCardV1 {
+      height: 167px;
+    }
+
+    .discoveryGroup {
+      clear: left;
+    }
+
+    .discoveryCard {
+      float:left;
+    }
+
+    .discoveryCardButtonContainer {
+      width: 300px;
+      margin: auto;
+      clear: left;
+    }
+
+    .discoveryCardButtonContainer .btn {
+      width: 100%;
+    }
+
+    .saveHomeNoOutline
+    {
+      position: relative;
+      outline: none;
+      top: 7px;
+    }
+  </style>
+
+
+  <link rel="stylesheet" type="text/css" href="http://css.trulia-cdn.com/css/I12_38/css/compiled/combo/pg-assessor-top-third.css" >
+
+
+
+
+  
+  <script>
+  (function() {
+    var waits;
+
+    
+    if (document.location.search.match(/optimizely_editor=true/)) {
+      waitForOptly();
+    } else {
+      escapeIframe();
+    }
+
+    
+    function waitForOptly() {
+      waits = setTimeout(escapeIframe, 10000);
+      window.addEventListener('message', checkMessage);
+    }
+
+    
+    function checkMessage(event) {
+      if (event.origin.match(/\.optimizely\.com$/)) {
+        clearTimeout(waits);
+        stopChecking();
+      }
+    }
+
+    
+    function stopChecking() {
+      window.removeEventListener('message', checkMessage);
+    }
+
+    
+    function escapeIframe() {
+      if (window.top !== window) {
+        window.top.location = window.location.toString();
+      }
+      stopChecking();
+    }
+  })();
+  </script>
+
+
+
+  
+  <script>var trulia = {page_name: 'details'};</script>
+
+  
+  
+
+
+        
+  <script src="http://static.trulia-cdn.com/javascript/I12_38/include/js/_built/combo/first_step.js"></script>
+  <script>
+      require.config({
+        baseUrl: "http://static.trulia-cdn.com/javascript/I12_38/include/js/_built/"
+      });
+
+      window.globals = {
+        baseUrl: "http://static.trulia-cdn.com/javascript/I12_38/include/js/_built/",
+        site_root: "/",
+        isUserLoggedIn: false,
+        isPro : false
+      }
+     define('globals', function() {
+       return window.globals;
+     });
+  </script>
+
+
+  <script src="//cdn.optimizely.com/js/707992661.js"></script>
+
+  <script src="http://js.indexww.com/ht/tru2.js"></script>
+
+
+
+      <link rel="canonical" href="http://www.trulia.com/homes/California/Los_Angeles/sold/3910533-824-S-Ridgeley-Dr-Los-Angeles-CA-90036">
+        <link rel="alternate" href="http://m.trulia.com/homes/California/Los_Angeles/sold/3910533-824-S-Ridgeley-Dr-Los-Angeles-CA-90036">
+  
+
+
+<script>
+
+  
+  if (typeof trulia == 'undefined') trulia = {};trulia.ads_data = inlineJSON({"page":{"network_code":"7449","ad_unit":"Trulia.com","dfp_zone":"Property_Details","dfp_subzone":"","dfp_zone2":"Buy_Sold","extra":"","keyvals":["city=los_angeles","state=ca","hood=miracle_mile","cnty=los_angeles","dma=31","env=403","oh=no","lot=2","sqft=2112","sqftrange=2000-2499","park=no","zip=90036","yrblt=1920-1939","aamgnrc1=824 S Ridgeley Dr","stale=no","pid=3910533","proptp=sfh","ba=1","bd=3","feat=no","listtp=buy_sold","user=ojl","claim=no"]},"slots":{"ad_dtl1":{"dfp_zone3":"b_right_p1","sizes":[[300,250],[300,600],[300,1050]]},"ad_dtl3":{"dfp_zone3":"b_main_p1","sizes":[[728,90],null]},"ad_dtl6":{"dfp_zone3":"b_right_p2","sizes":[[300,250],[300,600]]},"ad_bottom_description_content":{"dfp_zone3":"t_main_p1","sizes":[[650,30],[300,20]]},"ad_dtl12":{"dfp_zone3":"rtt_main_p1","sizes":[[115,17],null]},"ad_dtl15":{"dfp_zone3":"rtt_main_p2","sizes":[[115,17],null]},"pdp_for_sale_rtt1":{"dfp_zone3":"rtt_main_p1","sizes":[[650,102],null]},"pdp_for_sale_rtt2":{"dfp_zone3":"rtt_main_p2","sizes":[[650,102],null]},"pdp_for_sale_rtt3":{"dfp_zone3":"rtt_main_p3","sizes":[[650,102],null]},"ad_right_rail_bottom":{"dfp_zone3":"b_right_p3","sizes":[[300,250],null]},"post_lead_form_ad":{"dfp_zone3":"c_main_p2","sizes":[[350,30],null]},"ad_dtl16":{"dfp_zone3":"b_right_p4","sizes":[[300,250],null]},"ad_nearby_text_link":{"dfp_zone3":"t_main_p2","sizes":[[1090,54],null]},"ad_mortgage_hovercard":{"dfp_zone3":"c_main_p1","sizes":[[280,50],null]},"ad_pdtl1":{"dfp_zone3":"b_pover_p1","sizes":[[300,100],null],"sandboxed":true},"ad_pdtl2":{"dfp_zone3":"c_pover_p1","sizes":[[1778,1060],null],"sandboxed":true},"ad_experian_btn":{"keyvals":["listtp=buy_sold"],"dfp_zone3":"btn_main_p1","sizes":[[115,17],null]},"ad_credit":{"dfp_zone3":"crd_main_p1","sizes":[[1,1],null]}}});trulia.ads_filters.push(function filterOutPossibleRttSlots(key, data){var isRentalCommunity = false;var isRental = false;if (!isRental && key == 'ad_dtl12'){return true;}else if (!isRentalCommunity && key == 'ad_dtl12'){return;}else if (!isRentalCommunity && key == 'ad_dtl15'){return true;}else if (isRentalCommunity && (key == 'ad_dtl12' || key == 'ad_dtl15')){if (!document.getElementById(key)){return true;}}});
+
+
+
+
+trulia.ads_filters.push(function filterTopSpanAdABTest(key, data)
+{
+  if (key == 'top_span_ad' && typeof test_ads_topspan == 'string' && test_ads_topspan == 'b')
+  {
+    return true;
+  }
+});
+
+trulia.ads_targets.push(function addTopSpanAdABTestTrackingTargeting(ad)
+{
+  if (!ad.setTargeting) return;
+
+  if (typeof test_ads_topspan == 'string')
+  {
+    ad.setTargeting('vers', test_ads_topspan);
+  }
+});
+</script>
+
+
+
+  <script type='text/javascript'>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function()
+{ (i[r].q=i[r].q||[]).push(arguments)}
+,i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-47944506-1', 'trulia.com');
+ga('send', 'pageview');
+  </script>
+
+
+  
+    <script src="//assets.adobedtm.com/b190071362a03239960088271fc7ebaa3f883b00/satelliteLib-e3d3bc366b054cdd2cb3ed0dd7ce660659b7493d.js"></script>
+  
+</head>
+<body class="polarbear  pdpPage defaultPdp">
+
+
+
+  
+
+
+    <header class="globalNav " id="globalNavNormal" data-role="global_nav">
+  <div id="topNavContainer">
+    <div class="zIndexNavigation backgroundHighlight txtL" data-role="global_top_nav">
+      <nav class="line h6 typeWeightNormal mvn globalTopNavRow" role="navigation" data-role="global_nav_menu">
+        <div class="col globalNavLogoCol">
+          
+           <a href="/" class="globalNavLogo reversedLogo" data-role="global_nav_logo" title="Trulia real estate, homes for sale and apartments for rent">Trulia</a>
+        </div>
+        <div id="topNavSearchContainer" class="col hideVisually"></div>
+                  <div class="col phn" data-role="left_nav_menu_item">
+            <div class="pvm globalNavMenuItem globalNavMenuItemWithSubmenu dropdown globalNavMenuItem__buy" role="button" data-role="global_nav_menu_item global_nav_menu_item__buy">
+              <div class="typeReversed">
+                                  <a href="/CA/Los_Angeles,7206,Miracle_Mile/" class="globalNavMenuItemLink linkTypeReversed pam clickable" data-role="global_nav_link global_nav_menu_item_link" data-track="Buy">Buy
+                  </a>
+                              </div>
+              <div class="dropdownBox box boxBasic backgroundLowlight zIndexNavigation">
+                <ul class="dropdownList" data-role="global_nav_menu_submenu">
+                                                            <li class="subdropdown">
+                                                  <a href="/CA/Los_Angeles,7206,Miracle_Mile/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__nh|homesforsale" data-track="Buy|NH|HomesForSale">Miracle Mile Homes for Sale</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/for_sale/7206_nh/p_oh/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__nh|openhouse" data-track="Buy|NH|OpenHouse">Miracle Mile Open Houses</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/for_sale/7206_nh/foreclosure_lt/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__nh|foreclosure" data-track="Buy|NH|Foreclosure">Miracle Mile Foreclosures</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/for_sale/7206_nh/new_homes_lt/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__nh|newhome" data-track="Buy|NH|NewHome">Miracle Mile New Homes</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/sold/7206_nh/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__nh|recentlysold" data-track="Buy|NH|RecentlySold">Miracle Mile Recently Sold Homes</a>
+                                                                      </li>
+                                              <li class="dropdownDivider"></li>
+                                                                                                      <li class="subdropdown">
+                                                  <a href="/CA/Los_Angeles/90036/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__zip|homesforsale" data-track="Buy|Zip|HomesForSale">90036 Homes for Sale</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/for_sale/90036_zip/p_oh/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__zip|openhouse" data-track="Buy|Zip|OpenHouse">90036 Open Houses</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/for_sale/90036_zip/foreclosure_lt/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__zip|foreclosure" data-track="Buy|Zip|Foreclosure">90036 Foreclosures</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/for_sale/90036_zip/new_homes_lt/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__zip|newhome" data-track="Buy|Zip|NewHome">90036 New Homes</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/sold/90036_zip/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__zip|recentlysold" data-track="Buy|Zip|RecentlySold">90036 Recently Sold Homes</a>
+                                                                      </li>
+                                              <li class="dropdownDivider"></li>
+                                                                                                      <li class="subdropdown">
+                                                  <a href="/CA/Los_Angeles/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__city|homesforsale" data-track="Buy|City|HomesForSale">Los Angeles Homes for Sale</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/for_sale/Los_Angeles,CA/p_oh/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__city|openhouse" data-track="Buy|City|OpenHouse">Los Angeles Open Houses</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/for_sale/Los_Angeles,CA/foreclosure_lt/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__city|foreclosure" data-track="Buy|City|Foreclosure">Los Angeles Foreclosures</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/for_sale/Los_Angeles,CA/new_homes_lt/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__city|newhome" data-track="Buy|City|NewHome">Los Angeles New Homes</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/sold/Los_Angeles,CA/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__city|recentlysold" data-track="Buy|City|RecentlySold">Los Angeles Recently Sold Homes</a>
+                                                                      </li>
+                                              <li class="dropdownDivider"></li>
+                                                                                                      <li class="subdropdown">
+                                                  <a href="/advanced/city/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__advancedsearch" data-track="Buy|AdvancedSearch">More Search Options</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/submit_listings/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__sls" data-track="Buy|SLS">FREE List a property</a>
+                                                                      </li>
+                                              <li class="dropdownDivider"></li>
+                                                                                                      <li class="subdropdown">
+                                                  <a href="/sitemap/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__allhomesforsale" data-track="Buy|AllHomesForSale">All homes for sale</a>
+                                                                      </li>
+                                                                            </ul>
+              </div>
+            </div>
+          </div>
+                  <div class="col phn" data-role="left_nav_menu_item">
+            <div class="pvm globalNavMenuItem globalNavMenuItemWithSubmenu dropdown globalNavMenuItem__sell" role="button" data-role="global_nav_menu_item global_nav_menu_item__sell">
+              <div class="typeReversed">
+                                  <a href="/sell/?ts=trulia&tscamp=global_nav_sell" class="globalNavMenuItemLink linkTypeReversed pam clickable" data-role="global_nav_link global_nav_menu_item_link" data-track="Sell">Sell
+                  </a>
+                              </div>
+              <div class="dropdownBox box boxBasic backgroundLowlight zIndexNavigation">
+                <ul class="dropdownList" data-role="global_nav_menu_submenu">
+                                                            <li class="subdropdown">
+                                                  <a href="/sell/?ts=trulia&tscamp=global_nav_whats_my_home_worth" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__whats my home worth" data-track="Sell|Whats My Home Worth">What's My Home Worth</a>
+                                                                      </li>
+                                                                            </ul>
+              </div>
+            </div>
+          </div>
+                  <div class="col phn" data-role="left_nav_menu_item">
+            <div class="pvm globalNavMenuItem globalNavMenuItemWithSubmenu dropdown globalNavMenuItem__rent" role="button" data-role="global_nav_menu_item global_nav_menu_item__rent">
+              <div class="typeReversed">
+                                  <a href="/for_rent/CA/Los_Angeles,7206,Miracle_Mile/" class="globalNavMenuItemLink linkTypeReversed pam clickable" data-role="global_nav_link global_nav_menu_item_link" data-track="Rent">Rent
+                  </a>
+                              </div>
+              <div class="dropdownBox box boxBasic backgroundLowlight zIndexNavigation">
+                <ul class="dropdownList" data-role="global_nav_menu_submenu">
+                                                            <li class="subdropdown">
+                                                  <a href="/for_rent/CA/Los_Angeles,7206,Miracle_Mile/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__nh|apartment" data-track="Rent|NH|Apartment">Miracle Mile Apartments for Rent</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/for_rent/7206_nh/SINGLE-FAMILY_HOME_type/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__nh|home" data-track="Rent|NH|Home">Miracle Mile Homes for Rent</a>
+                                                                      </li>
+                                              <li class="dropdownDivider"></li>
+                                                                                                      <li class="subdropdown">
+                                                  <a href="/for_rent/90036_zip/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__zip|apartment" data-track="Rent|Zip|Apartment">90036 Apartments for Rent</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/for_rent/90036_zip/SINGLE-FAMILY_HOME_type/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__zip|home" data-track="Rent|Zip|Home">90036 Homes for Rent</a>
+                                                                      </li>
+                                              <li class="dropdownDivider"></li>
+                                                                                                      <li class="subdropdown">
+                                                  <a href="/for_rent/Los_Angeles,CA/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__city|apartment" data-track="Rent|City|Apartment">Los Angeles Apartments for Rent</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/for_rent/Los_Angeles,CA/SINGLE-FAMILY_HOME_type/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__city|home" data-track="Rent|City|Home">Los Angeles Homes for Rent</a>
+                                                                      </li>
+                                              <li class="dropdownDivider"></li>
+                                                                                                      <li class="subdropdown">
+                                                  <a href="/advanced/rent/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__advancedsearch" data-track="Rent|AdvancedSearch">More Search Options</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/post-rental/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__sls" data-track="Rent|SLS">FREE List a property</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="https://support.trulia.com/hc/en-us/articles/206731187-Rental-Listing-Scams-Read-Before-You-Search" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__fraud faqs" data-track="Rent|Fraud FAQs">Rental Fraud FAQs</a>
+                                                                      </li>
+                                              <li class="dropdownDivider"></li>
+                                                                                                      <li class="subdropdown">
+                                                  <a href="/rent-sitemap/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__allapartmentsforrent" data-track="Rent|AllApartmentsForRent">All apartments for rent</a>
+                                                                      </li>
+                                                                            </ul>
+              </div>
+            </div>
+          </div>
+                  <div class="col phn" data-role="left_nav_menu_item">
+            <div class="pvm globalNavMenuItem globalNavMenuItemWithSubmenu dropdown globalNavMenuItem__mortgage" role="button" data-role="global_nav_menu_item global_nav_menu_item__mortgage">
+              <div class="typeReversed">
+                                  <a href="/mortgages/pre-approval/?omni_src=mortgage|global_nav_top" class="globalNavMenuItemLink linkTypeReversed pam clickable" data-role="global_nav_link global_nav_menu_item_link" data-track="Mortgage">Mortgage
+                  </a>
+                              </div>
+              <div class="dropdownBox box boxBasic backgroundLowlight zIndexNavigation">
+                <ul class="dropdownList" data-role="global_nav_menu_submenu">
+                                                            <li class="subdropdown">
+                                                  <a href="/mortgages/pre-approval/?omni_src=mortgage|global_nav" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__preapproval" data-track="Mortgage|Preapproval">Get Pre-Approved</a>
+                                                                      </li>
+                                              <li class="dropdownDivider"></li>
+                                                                                                      <li class="subdropdown">
+                                                  <a href="/mortgage-rates/Los_Angeles,CA/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__mortgage" data-track="Mortgage|Mortgage">Los Angeles Mortgage Rates</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/refinance-rates/Los_Angeles,CA/?loantype=refinance" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__refinance" data-track="Mortgage|Refinance">Los Angeles Refinance Rates</a>
+                                                                      </li>
+                                              <li class="dropdownDivider"></li>
+                                                                                                      <li class="subdropdown">
+                                                  <a href="/rent_vs_buy/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__calculators" data-track="Mortgage|Calculators">Rent vs Buy Calculator</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/mortgage-calculators/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__calculators" data-track="Mortgage|Calculators">Mortgage Calculators</a>
+                                                                      </li>
+                                                                            </ul>
+              </div>
+            </div>
+          </div>
+                  <div class="col phn" data-role="left_nav_menu_item">
+            <div class="pvm globalNavMenuItem globalNavMenuItemWithSubmenu dropdown globalNavMenuItem__findpro" role="button" data-role="global_nav_menu_item global_nav_menu_item__findpro">
+              <div class="typeReversed">
+                                  <a href="/directory/Los_Angeles-agent--22637/" class="globalNavMenuItemLink linkTypeReversed pam clickable" data-role="global_nav_link global_nav_menu_item_link" data-track="FindPro">Find an Agent
+                  </a>
+                              </div>
+              <div class="dropdownBox box boxBasic backgroundLowlight zIndexNavigation">
+                <ul class="dropdownList" data-role="global_nav_menu_submenu">
+                                                            <li class="subdropdown">
+                                                  <a href="/directory/Los_Angeles-agent--22637/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__agents" data-track="FindPro|Agents">Los Angeles Real Estate Agents</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/directory/Los_Angeles-broker--22637/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__brokers" data-track="FindPro|Brokers">Los Angeles Real Estate Brokers</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/directory/Los_Angeles-mortgage_broker_or_lender--22637/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__lenders" data-track="FindPro|Lenders">Los Angeles Mortgage Brokers or Lenders</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/directory/Los_Angeles-builder_developer--22637/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__builders" data-track="FindPro|Builders">Los Angeles Builders/Developers</a>
+                                                                      </li>
+                                                                            </ul>
+              </div>
+            </div>
+          </div>
+                  <div class="col phn" data-role="left_nav_menu_item">
+            <div class="pvm globalNavMenuItem globalNavMenuItemWithSubmenu dropdown globalNavMenuItem__more" role="button" data-role="global_nav_menu_item global_nav_menu_item__more">
+              <div class="typeReversed">
+                                  <span data-action="" class="globalNavMenuItemLink pam clickable" data-role="global_nav_link global_nav_menu_item_link" data-track="More">More
+                  </span>
+                              </div>
+              <div class="dropdownBox box boxBasic backgroundLowlight zIndexNavigation">
+                <ul class="dropdownList" data-role="global_nav_menu_submenu">
+                                                            <li class="subdropdown">
+                                                  <a href="http://www.trulia.com/blog/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__blog" data-track="More|Blog">Blog</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/amfam/?afisrc=natural&aficontent=articleBox01_Proper_Home_Coverage" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__amfamguides" data-track="More|AmFamGuides">Insurance Guide</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <span class="dropdownLink " data-action="%2Freal_estate%2FMiracle_Mile-Los_Angeles%2F7206%2F" data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__local|home" data-track="More|Local|Home">Local Info</span>
+                                                                          <div class="subdropdownBox boxBasic backgroundLowlight ">
+                            <ul class="dropdownList" data-role="global_nav_menu_submenu">
+                                                                                                <li>
+                                                                          <a href="/real_estate/Miracle_Mile-Los_Angeles/7206/" class="dropdownLink" data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__nh|overview" data-track="More|Local|Home|NH|Overview">Miracle Mile Real Estate Overview</a>
+                                                                      </li>
+                                                                                                    <li>
+                                                                          <a href="/real_estate/Miracle_Mile-Los_Angeles/7206/market-trends/" class="dropdownLink" data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__nh|trends" data-track="More|Local|Home|NH|Trends">Miracle Mile Market Trends</a>
+                                                                      </li>
+                                                                                                    <li>
+                                                                          <a href="/real_estate/Miracle_Mile-Los_Angeles/7206/schools/" class="dropdownLink" data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__nh|schools" data-track="More|Local|Home|NH|Schools">Miracle Mile Schools</a>
+                                                                      </li>
+                                                                                                    <li>
+                                                                          <a href="/real_estate/Los_Angeles-California/crime/" class="dropdownLink" data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__nh|crime" data-track="More|Local|Home|NH|Crime">Miracle Mile Crime</a>
+                                                                      </li>
+                                                                      <li class="dropdownDivider"></li>
+                                                                                                                                                                  <li>
+                                                                          <a href="/real_estate/90036-Los_Angeles/" class="dropdownLink" data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__zip|overview" data-track="More|Local|Home|Zip|Overview">90036 Real Estate Overview</a>
+                                                                      </li>
+                                                                                                    <li>
+                                                                          <a href="/real_estate/90036-Los_Angeles/market-trends/" class="dropdownLink" data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__zip|trends" data-track="More|Local|Home|Zip|Trends">90036 Market Trends</a>
+                                                                      </li>
+                                                                                                    <li>
+                                                                          <a href="/real_estate/90036-Los_Angeles/schools/" class="dropdownLink" data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__zip|schools" data-track="More|Local|Home|Zip|Schools">90036 Schools</a>
+                                                                      </li>
+                                                                                                    <li>
+                                                                          <a href="/real_estate/Los_Angeles-California/crime/" class="dropdownLink" data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__zip|crime" data-track="More|Local|Home|Zip|Crime">90036 Crime</a>
+                                                                      </li>
+                                                                      <li class="dropdownDivider"></li>
+                                                                                                                                                                  <li>
+                                                                          <a href="/real_estate/Los_Angeles-California/" class="dropdownLink" data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__city|overview" data-track="More|Local|Home|City|Overview">Los Angeles Real Estate Overview</a>
+                                                                      </li>
+                                                                                                    <li>
+                                                                          <a href="/real_estate/Los_Angeles-California/market-trends/" class="dropdownLink" data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__city|trends" data-track="More|Local|Home|City|Trends">Los Angeles Market Trends</a>
+                                                                      </li>
+                                                                                                    <li>
+                                                                          <a href="/real_estate/Los_Angeles-California/schools/" class="dropdownLink" data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__city|schools" data-track="More|Local|Home|City|Schools">Los Angeles Schools</a>
+                                                                      </li>
+                                                                                                    <li>
+                                                                          <a href="/real_estate/Los_Angeles-California/crime/" class="dropdownLink" data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__city|crime" data-track="More|Local|Home|City|Crime">Los Angeles Crime</a>
+                                                                      </li>
+                                                                                                                            </ul>
+                          </div>
+                                              </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/local-info/cities" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__neighborhood_guides" data-track="More|Neighborhood_Guides">Neighborhood Guides</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/local/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__local|maps" data-track="More|Local|Maps">Trulia Maps</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/mobile/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__mobile" data-track="More|Mobile">Trulia Mobile</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <span class="dropdownLink " data-action="%2Fvoices%2Fqa%2FLos_Angeles---22637" data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__voices" data-track="More|Voices">Advice</span>
+                                                                          <div class="subdropdownBox boxBasic backgroundLowlight ">
+                            <ul class="dropdownList" data-role="global_nav_menu_submenu">
+                                                                                                <li>
+                                                                          <a href="/voices/qa/Los_Angeles---22637" class="dropdownLink" data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__locationqa" data-track="More|Voices|LocationQA">Los Angeles Q&amp;A</a>
+                                                                      </li>
+                                                                                                    <li>
+                                                                          <a href="/voices/guides/" class="dropdownLink" data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__guides" data-track="More|Voices|Guides">Guides</a>
+                                                                      </li>
+                                                                                                                            </ul>
+                          </div>
+                                              </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/ask/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__ask" data-track="More|Ask">Ask a Question</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/help/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__" data-track="More|">Help Center</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/real-estate-leads/" class="dropdownLink smlVisible" data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__premieragent" data-track="More|PremierAgent">Get Leads by ZIP</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/real-estate-leads/" class="dropdownLink smlVisible" data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__premieragent" data-track="More|PremierAgent">Advertising</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/sellerads/" class="dropdownLink smlVisible" data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__sellerads" data-track="More|SellerAds">Seller Leads</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/truliapro/?src=000022" class="dropdownLink smlVisible" data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__pro" data-track="More|Pro">Trulia Pro</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/submit_listings/" class="dropdownLink smlVisible" data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__listings" data-track="More|Listings">Submit Listings</a>
+                                                                      </li>
+                                                                            </ul>
+              </div>
+            </div>
+          </div>
+                  <div class="col phn" data-role="left_nav_menu_item">
+            <div class="pvm globalNavMenuItem globalNavMenuItemWithSubmenu dropdown globalNavMenuItem__forprofessionals" role="button" data-role="global_nav_menu_item global_nav_menu_item__forprofessionals">
+              <div class="typeReversed">
+                                  <a href="/real-estate-leads/" class="globalNavMenuItemLink linkTypeReversed pam clickable prs" data-role="global_nav_link global_nav_menu_item_link" data-track="ForProfessionals">For Professionals
+                  </a>
+                              </div>
+              <div class="dropdownBox box boxBasic backgroundLowlight zIndexNavigation">
+                <ul class="dropdownList" data-role="global_nav_menu_submenu">
+                                                            <li class="subdropdown">
+                                                  <a href="/real-estate-leads/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__premieragent" data-track="ForProfessionals|PremierAgent">Get Leads by ZIP</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/real-estate-leads/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__premieragent" data-track="ForProfessionals|PremierAgent">Advertising</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/sellerads/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__sellerads" data-track="ForProfessionals|SellerAds">Seller Leads</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/truliapro/?src=000022" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__pro" data-track="ForProfessionals|Pro">Trulia Pro</a>
+                                                                      </li>
+                                                                <li class="subdropdown">
+                                                  <a href="/submit_listings/" class="dropdownLink " data-ignore-filters="1" data-role="global_nav_link global_nav_menu_submenu_item global_nav_menu_submenu_item__listings" data-track="ForProfessionals|Listings">Submit Listings</a>
+                                                                      </li>
+                                                                            </ul>
+              </div>
+            </div>
+          </div>
+        
+                  <div id="global_nav_tabs_container" class="colExt pln">
+  <div data-role="close_right_panel" class="col h5 typeReversed mvn pln hideVisually">
+    <div class="panelCloseBtn ptm phs clickable"><i class="iconRightOpen"></i></div>
+  </div>
+  <div data-role="slide_panel_container" class="col pan">
+    <ul id="slidePanelTabs" class="slidePanelTabsRow tabs mvn lvn lhn" data-body="#panelContents">
+      <li class="mvn" data-tab="boards" style="margin-right:-4px">
+        <a href="#" class="linkTypeReversed">
+          <div id="global_nav_saved_homes" class="globalIcon typeReversed pam">
+            Saved Homes
+            <span class="iconBadge badgePrimary hideVisually" data-role="notify_badge">1</span>
+          </div>
+        </a>
+      </li>
+      <li class="mvn" data-tab="searches">
+        <a class="linkTypeReversed clickable" follow="true">
+          <div class="globalIcon typeReversed pam">
+            Saved Searches
+          </div>
+        </a>
+      </li>
+    </ul>
+
+    <div id="slidePanel" class="txl2 zIndexFloater">
+      <ul id="panelContents" class="tabBody mvn pbl"></ul>
+    </div>
+  </div>
+
+  
+  <div class="colExt typeReversed pls" data-role="global_user_card_container">
+    <div id="userCardPlaceholder" class="globalUserCard" data-role="global_user_card"></div>
+  </div>
+</div>
+        
+      </nav>
+    </div>
+  </div>
+
+  <div class="backgroundBasic">
+  
+
+    
+    
+              <div class="backgroundBasic txtL pvs" id="global-sub-nav" data-role="pdp_search_bar">
+  <div class="container containerResponsive">
+    <div id="truliaMarkerLogo" class="hideFully animate txtC pts">
+      <a href="/">
+        <img src="http://static.trulia-cdn.com/images/logos/trulia_marker_logo_white_34px.png" width="18" height="34" />
+      </a>
+    </div>
+    <div class="line mln">
+      <div class="col cols14">
+        
+        
+                          <div id="contactAgentButton" class="prl mlm animate animateFadeIn">
+            <button data-tracking="property-bar" data-quick-connect="true" data-role="request_info_traceback"
+                    class="btn btnPrimary btnFullWidth btnDefault property-bar-contact mlm assessor">
+              Request More Info
+            </button>
+          </div>
+        
+        
+        
+                          <div id="global_nav_searchbox" class="pbn pln "
+               data-toggle-btn="true">
+            <form id="globalSearchBox" class="form line man" action="/submit_search/">
+              <input type="hidden" name="hsb" value="1">
+              <input type="hidden" name="tst" value="h">
+              <input type="hidden" name="locationId" value="">
+              <input type="hidden" name="pid" value="" />
+              <input type="hidden" name="propertyIndex" value="" />
+              <input type="hidden" name="ac_index"  value="" />
+              <input type="hidden" name="ac_entered_query" value="" />
+              <input type="hidden" name="topnav_extra" value="">
+              <input type="hidden" name="display" value="" />
+
+              <div class="field mvn" data-role="global_nav_search_container">
+                
+                                <input type="hidden" name="q" value="">
+                  <span class="fieldItem fieldAppend text">
+                    <input type="text" aria-labelledby="searchButton" class="searchInput text searchByLocation h6 typeWeightNormal man"
+                           name="search" placeholder="Search by neighborhood, city, zip or address" autocomplete="off"
+                           value="Los Angeles, CA"
+                           data-role="global_nav_search_field global_nav_search_by_location"><button type="submit"
+                              class="addOn btn" data-role="global_nav_search_button" value="Search">
+                              <i class="iconSearch"></i>
+                              </button>
+                  </span>
+                
+                <div class="dropdown">
+                  <div class="box dropdownBox boxBasic backgroundLowlight dropdownBoxHighlight dropdownArrowLeft mtm pvs">
+                    <ul class="autoSuggestList listBorderedHover backgroundBasic clickable h7 lvs lhl pln"></ul>
+                                        <div class="historyList"></div>
+                                      </div>
+                </div>
+
+                                <span class="textDropdownTrigger typeLowlight typeEmphasize clickable hideVisually h6 man" data-tooltip-skin="tooltipDark"></span>
+                
+              </div>
+              <div class="col lastCol">
+                
+                
+              </div>
+            </form>
+          </div>
+
+                        </div>
+      <div class="col cols10 lastCol txtR">
+        <ul class="listInline mvn prm">
+                    <li class="man prs">
+            <button id="zlfToolbarBtn" class="btn btnDefault btnSml"><a class="activeLink" href="/pre-approval?omni_src=mortgage|pdp_toolbar_variant1">Get Pre-Approved</a></button>
+          </li>
+                    <li class="man">
+            
+            <ul class="listInline property-data-elem mvn"
+                data-property-id="3910533"
+                data-property-status="Assessor"
+                data-property-state-code="CA"
+                    >
+                            <li class="prn mvn">
+                <button class="saveBtn btn btnDefault btnSml phl follow hideFully property_action_follow"
+                        title=""
+                        data-role="pdp_save_button"
+                        data-following=0>
+                <span class="iconHeartEmpty iconHeartPinkOutline"></span>
+                <span class="follow-label" data-follow-text="Save">Save</span>
+                </button>
+              </li>
+
+              <li class="prn mvn">
+                <span id="discussTooltip" data-tooltip="Discuss this home with your collaborators." data-tooltip-anchor="bottom" data-tooltip-skin="tooltipDark">
+                  <button id="discussBtn"
+                          class="btn btnDefault btnSml phm hideFully"
+                          title=""
+                          data-context="pdp toolbar"
+                          data-following="">
+                    <span class="iconChat typeWarning"></span>
+                    <span class="follow-label" data-follow-text="Discuss">Discuss</span>
+                  </button>
+                </span>
+              </li>
+              
+              <li class="prn mvn">
+                <button id="top_nav_share_button" class="email_share btn btnDefault btnSml phl"><i class="iconMail typeLowlight"></i>Share</button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script type="text/template" id="emptyListItemTemplate">
+	<li class="pvn mvn"></li>
+</script>
+
+
+
+<script type="text/template" id="autoSuggestItemTemplate">
+  <li class="man pvs" data-title="<%= title %>" data-value="<%= value %>" data-location-id="<%= locationId %>" data-pid="<%= pid %>" data-property-Index="<%= propertyIndex %>" data-ac_index="<%= ac_index %>" data-location-type="<%= locationType %>" data-bed-Filter="<%= bedFilter %>" data-bath-Filter="<%= bathFilter %>" data-property-Filter="<%= propertyFilter %>">
+    <div class="line man">
+    		<div class="col cols20 pan typeTruncate">
+    			<%= display %>
+    		</div>
+    	<div class="colExt txtR typeLowlight pan"><%= suffix %></div>
+    </div>
+  </li>
+</script>
+
+  </div>
+</div>
+      
+
+    
+  
+</div>
+</header>
+
+
+
+
+  
+
+  
+  <div class="content backgroundInverseAlternate tsaBanner">
+    <div class="container pvl">
+      <div class="line">
+        <div class="col cols13">
+          <h3 class="txtR prl typeEmphasize linkTypeReversed">Find out what your home is worth.</h3>
+        </div>
+        <div class="col lastCol">
+          <h3>
+            <a target="_blank" href="/sell?ts=trulia&tscamp=banner_PDP&inq_addr=824+S+Ridgeley+Dr%2C+Los+Angeles%2C+CA+90036&pubid=CA3910533" class="btn btnPrimary mll typeDeemphasize">Get My Home Value</a>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="content">
+    <div id="mediaPlayerModal"></div>
+    
+  
+  <div class="container" style="width: 1090px; position: relative;">
+
+  <div class="pageContent">
+    
+  <span class="typeLowlight h7"><div >
+
+
+<a href="/">Sold</a>
+
+&gt; <a href="/property-sitemap/CA">CA</a>
+
+&gt; <a href="/sold/Los_Angeles,CA/">Los Angeles</a>
+
+&gt; <a href="/sold/90036_zip/">90036</a>
+
+&gt; <a href="/sold/7206_nh/">Miracle Mile</a>
+
+&gt; <a href="/homes/California/Los_Angeles/sold/3910533-824-S-Ridgeley-Dr-Los-Angeles-CA-90036">824 S Ridgeley Dr</a>
+</div>
+</span>
+
+
+    
+  
+  <div>
+    <div class="box boxBasic backgroundBasic mts">
+<div class="box boxBasic backgroundLowlight man pan contactModule contactModuleTop">
+  <div class="backgroundInverseAlternate pll pvm priceModule">
+          <div class="h2 typeReversed typeDeemphasize mvn pan">
+        <span itemscope itemtype="http://schema.org/Offer">
+          <span content="USD" itemprop="priceCurrency">$</span><span itemprop="price" content="1400000">1,400,000</span>
+          <span class="h7 typeDeemphasize" itemprop="description">Trulia Est.</span>
+        </span>
+      </div>
+    
+    <ul class="listInline man">
+            <li class="man prn">
+        <div class="mortgageRefinance">
+          <a href="/refinance-rates/Los_Angeles,CA/?zip=90036&auto=true&propertyId=3910533&status=sold&loantype=refinance" class="linkLowlight h7">Refinance your home</a>
+        </div>
+      </li>
+      <li class="typeLowlight man phs">|</li>
+            <li class="man pbxs">
+        <div id="ad_experian_btn"></div>
+      </li>
+    </ul>
+
+  </div>
+  <div class="phl ptm">
+        <div class="adProxy"
+       data-layout="default"
+       data-position="right_rail"
+       data-show-listing-agent="true"
+       data-show-user-fields="true"
+       data-hide-coreg-optin="false"
+  >
+    <div class="txtC pal"><i class="iconSpinner txtC"></i></div>
+  </div>
+  </div>
+</div>
+<div class="photoMapContainer man pan">
+<div class="pan">
+    <ul id="mediaTabs" class="tabBody man pan">
+    <li class="photoTabContent man tabContent clickable ">
+      
+      
+      <div class="photoPlayerCurrentItemContainer overlayContainer landscapeSmall">
+        <div class="photoPlayerCurrentItem txtM"
+             data-role="propertyImage"
+             style="background-image:url('http://maps.googleapis.com/maps/api/streetview?client=gme-truliainc&size=640x480&sensor=false&location=34.05988%2C-118.35115&signature=czpPLRtXa9SvRoYC9s0nbH9NWPo=');">
+        </div>
+      </div>
+
+      <ul class="listInline viewTabIconsList lhn prm mrm">
+                <li class="mlm">
+          <div class="frameSmall backgroundBasic">
+            <div class="viewTabContentIcon overlayContainer">
+              <a class="viewMapLink viewIconLink" href="#" data-role="media_icon_btn" data-target-tab="mapTabContent"
+                 data-target-content="mediaTabMap">
+                <img class="mapImg" src="http://static.trulia-cdn.com/images/icons/map_icon_70x70_txl2.png">
+                <div class="overlayLowlight overlayBottom overlayFullWidth txtC h8 mbn linkTypeReversed">
+                  View Map
+                </div>
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="overlayTransparent overlayBottom overlayRight mrl prm pbm h8">
+              </div>
+    </li>
+
+        <li class="streetviewTabContent man hideFully tabContent backgroundMidnight">
+      <div id="mediaTabStreetview" class="loading"></div>
+      <ul class="listInline viewTabIconsList lhn prm mrm">
+                <li class="mvn mlm mrn">
+          <div class="frameSmall backgroundBasic">
+            <div class="viewTabContentIcon overlayContainer">
+              <a class="viewPhotoLink viewIconLink" href="#" data-role="media_icon_btn" data-target-tab="mapTabContent"
+                 data-target-content="mediaTabMap">
+                <img class="mapImg" src="http://static.trulia-cdn.com/images/icons/map_icon_70x70_txl2.png">
+                <div class="overlayLowlight overlayBottom overlayFullWidth txtC h8 mbn linkTypeReversed">
+                  View Map
+                </div>
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </li>
+    
+    <li class="mapTabContent man hideFully tabContent backgroundMidnight">
+      <div id="mediaTabMap"></div>
+      <ul class="listInline viewTabIconsList lhn prm mrm">
+                        <li class="mvn mlm mrn" data-role="streetViewIcon">
+          <div class="frameSmall backgroundBasic">
+            <div class="viewTabContentIcon streetView overlayContainer">
+              <a class="viewStreetViewMapLink viewIconLink" href="#" data-role="media_icon_btn"
+                 data-target-tab="streetviewTabContent" data-target-content="mediaTabStreetview">
+                <img class="mapImg" style="position:absolute"
+                     src="http://static.trulia-cdn.com/images/icons/street_icon_70x70.png">
+
+                <div class="overlayLowlight overlayBottom overlayFullWidth txtC h8 mbn linkTypeReversed">
+                  Street View
+                </div>
+              </a>
+            </div>
+          </div>
+        </li>
+              </ul>
+    </li>
+  </ul>
+</div>
+
+<div id="propertyDetails" class="line">
+  <div class="col cols8"></div>
+  <div class="col cols16 plm">
+    <div class="typeWarning typeCaps h7 mtl mbn">
+              PUBLIC RECORD
+          </div>
+    <div class="headingDouble mtn ptn" data-role="address_module">
+      <h1 class="h6 mtn ptn" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+        <span class="headingDoubleSuper h2 typeWeightNormal mvn ptn" itemprop="streetAddress">824 S Ridgeley Dr</span>
+          <span class="headlineDoubleSub typeWeightNormal typeLowlight man">
+          <span itemprop="addressLocality">Los Angeles</span>,
+          <span class="pls" itemprop="addressRegion">CA</span>
+          <span class="pls" itemprop="postalCode">90036</span>
+                      <span class="pls">(Miracle Mile)</span>
+                    </span>
+      </h1>
+              <a href="#nearby/commute" class="mls typeWeightNormal" data-role="commuteLink"><span class="iconClock"></span> See your commute times</a>
+          </div>
+
+    <ul class="listBulleted listingDetails mrn mtm list3cols">
+
+            <li>Single-Family Home</li>
+      
+             <li>3 Bedrooms</li>
+      
+                    <li>1 full Bathroom</li>
+      
+              <li>2,112 sqft</li>
+      
+      
+              <li>Lot size: 6,734 sqft</li>
+      
+              <li>Built in 1924</li>
+      
+      
+      
+              <li data-action="showClaimHomePopup" class="property_action_edit mln">
+          <a  title="Edit home facts" class="clickable">
+            <span class="iconPencil"></span> Edit Home Facts
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+<div id="claimHomeModalContainer"></div>
+
+</div>
+      <div class="overlayBottom overlayFullWidth txtC">
+      <div class="pas backgroundLowlight">100+ Rentals in this Area: <a href="http://www.trulia.com/for_rent/Los_Angeles,CA/" onclick="o_track_ql_click('search_nearby_rentals');">Search Nearby Rentals</a></div>
+    </div>
+  
+</div>
+
+
+  </div>
+  
+  <div class="line asideFloaterContainer"
+       style="margin: 0 auto">
+    <div class="col cols16">
+      <div id="ad_bottom_description_content" class="txtC mts"></div>
+      
+<div id="homeDetails" class="line asideFloaterContainer">
+  <div class="col cols24">
+          <h2 class="mbn typeEmphasize">
+        Property Details
+          <span class="typeWeightNormal typeLowLight">for 824 S Ridgeley Dr</span>
+    </h2>
+  </div>
+</div>
+  <hr class="mtn">
+
+  
+  
+  
+      <div class="mbm typeLowlight">Description provided by Trulia</div>
+  
+  <div itemscope itemtype="http://schema.org/Place" >
+    <span itemprop="description" id="corepropertydescription">
+                    This is a Single-Family Home located at 824 South Ridgeley Drive, Los Angeles, CA. 824 S Ridgeley Dr has 3 beds, 1 bath, and approximately 2,112 square feet. The property has a lot size of 1 and was built in 1924. 824 S Ridgeley Dr is in the Miracle Mile neighborhood in Los Angeles, CA. The average list price for Miracle Mile is $1,104,800.
+          </span>
+          </div>
+
+
+
+
+  
+
+  
+<div class="mtl">
+  
+  
+  
+        
+
+
+  
+  
+      <h2 class="pbn mbn h5">
+      Public Records
+      <span class="typeWeightNormal typeLowlight">for 824 S Ridgeley Dr </span>
+    </h2>
+  
+      <hr class="mtn">
+    <span>Official property, sales, and tax information from county (public) records as of 07/2015:
+  </span>
+
+  <ul class="listInline mbn pdpFeatureList">
+    <li class="cols7 listTopAlign mbn">
+      <ul class="listBulleted mbn">
+                  <li>Single Family Residential</li>
+                  <li>2,112 sqft</li>
+                  <li>Heating: Floor/Wall</li>
+                  <li>County: Los Angeles</li>
+              </ul>
+    </li>
+    <li class="cols8 listTopAlign mbn">
+      <ul class="listBulleted mbn">
+                  <li>3 Bedrooms</li>
+                  <li>Lot Size: 6,734 sqft</li>
+                  <li>1 Unit</li>
+                  <li>Tax Rate Code Area: 0-067</li>
+              </ul>
+    </li>
+
+    <li class="cols7 listTopAlign mbn">
+      <ul class="listBulleted mbn">
+                  <li>1 Bathroom</li>
+                  <li>Built In 1924</li>
+                  <li>1 Building</li>
+              </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+
+    <aside class="aside ptm mln mrm" role="complementary">
+      <div id="ad_dtl1" class="ad300x250flex mbl"></div>
+
+      <div id="ad_dtl6" class="ad300x250flex"></div>
+    </aside>
+  </div>
+
+  <div class="ballerPdpContent">
+    <div class="typeWeightNormal txtC h1">See businesses, schools, and crimes near this home</div>
+    <div data-role="nearbyMainView">
+      <div data-role="nearbyStaticContainer">
+  <div data-role="nearbyMapCanvas" class="box boxBasic mapSmall mbn">
+    <div id="googleMapContainer" class="mapContainer"></div>
+    <div id="mapLayerControlList" class="mapLayerControl overlayTop overlayLeft backgroundBasic">
+      <ul class="componentList listBordered">
+        <li>
+          <div data-role="nearbyCommuteView">
+            <div class="line">
+              <a href="#nearby/commute">
+                <span class="col cols20">
+                  <i class="iconClock mhs h4 activeLink" data-role="nearbyIcon"></i>
+                  <strong>Calculate your commute time</strong> from this home
+                </span>
+                <i class="h4 mvn iconDownOpen colExt"></i>
+              </a>
+            </div>
+            <div data-layer-type="commute" class="mll ptm line hideFully">
+              <div class="txtC mtl">Loading...<i class="iconSpinner"></i></div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div data-role="nearbyAmenitiesView">
+            <div data-header-type="amenities" class="line">
+              <a href="#nearby/amenities">
+                <span class="mls col cols20 typeTruncate">
+
+                    <i class="iconRestaurants h4 mlxs mrxs activeLink" data-role="nearbyIcon"></i>
+
+                    <strong data-role="amenitiesTitle">See businesses</strong> within 1 mile of this home
+                </span>
+                <i class="h4 mvn iconDownOpen colExt"></i>
+              </a>
+            </div>
+            <div data-layer-type="amenities" id="amenitiesLayer" data-role="content" class="mll ptm line hideFully"></div>
+          </div>
+        </li>
+        <li>
+          <div data-role="nearbyDemographicsView">
+            <div data-header-type="demographics" class="line">
+              <a href="#nearby/demographics">
+                <span class="col cols22">
+                  <i class="iconUsers h4 mls plxs mrxs activeLink" data-role="nearbyIcon"></i>
+                  <span data-role="demographicsTitle"><strong>See demographics</strong> within 1 mile of this home</span>
+                </span>
+                <i class="h4 mvn iconDownOpen pln colExt"></i>
+              </a>
+            </div>
+            <div data-layer-type="demographics" id="demographicsLayer" data-role="content" class="mhl ptm line hideFully"></div>
+          </div>
+        </li>
+        <li>
+          <div data-role="nearbySchoolsView">
+            <div data-header-type="schools" class="line">
+              <a href="#nearby/schools">
+                <span class="mls col cols20 typeTruncate">
+                  <i class="iconGraduationCap typeSchools h5 mlxs mrxs prxs activeLink" data-role="nearbyIcon"></i>
+                                      <strong>See 3 schools assigned to this home. </strong>
+                  
+                  Wilshire Crest Elementary School, John Burroughs Middle School, Fairfax Senior High School
+                </span>
+                <i class="h4 mvn iconDownOpen colExt"></i>
+              </a>
+            </div>
+            <div data-layer-type="schools" class="mhl ptm hideFully" data-role="content"></div>
+          </div>
+        </li>
+        <li>
+          <div data-role="nearbyCrimeView">
+            <div class="line" data-header-type="crime">
+              <a href="#nearby/crime">
+                <span class="mls col cols20 typeTruncate">
+                  <i class="iconStarShield h4 mlxs activeLink" data-role="nearbyIcon"></i>
+                  <strong>See reported crimes</strong> near this home
+                </span>
+                <i class="h4 mvn iconDownOpen colExt"></i>
+              </a>
+            </div>
+            <div class="mhl ptm hideFully" data-layer-type="crime"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div data-role="smallLayerControl" class="smallLayerControl overlayRight overlayTop"></div>
+    <div id="mapResizeControl" class="nav overlayLowlight overlayTop overlayRight txtC pvs"></div>
+    <ul id="nearbyMapZoomControl" class="mapControl listBorderedHover backgroundBasic h4 box boxHighlight overlayRight mrm bas">
+      <li class="pan man"><a class="mapZoomIn pvn phs linkLowlight typeEmphasize" href="#">+</a></li>
+      <li class="pan man"><a class="mapZoomOut pvn phs linkLowlight typeEmphasize" href="#">−</a></li>
+    </ul>
+    <div id="mapLegend" class="legendContainer"></div>
+    <div id="disclaimerModal" class="modal box boxHighlight backgroundBasic"></div>
+  </div>
+</div>
+<div id="ad_nearby_text_link" class="mbl"></div>
+<div data-role="nearbyModalContainer" class="modal"></div>
+    </div>
+  </div>
+
+
+    <div style="margin:0 auto">
+      
+      <aside class="aside ptm" role="complementary" style="width:300px;">
+        
+
+        
+  
+<!-- SiteSpect: User Survey -->
+
+    <div class="askMiniModule module clearfix box backgroundBasic pbs">
+  <div class="heading  backgroundHighlight h5 typeEmphasize pvs phm typeReversed mtn mhn">
+          Ask a question about Miracle Mile, Los Angeles, CA
+      </div>
+  <div class="mam pad10">
+        <form class="askQuestionMiniForm form oocss " name="ask_question_form" autocomplete="off" action="" method="post" >
+      <div class="field mbn">
+        <div class="fieldItem text">
+          <textarea name="questionTitle"
+            maxlength="150"
+            placeholder="Ask agents or local experts anything"
+            data-focus-placeholder="Ask a question"></textarea>
+            <div id="error_questionTitle_ask_mini_form" class="qa_error typeWarning h7 hideFully hidden"></div>
+        </div>
+      </div>
+      <div class="categorization clearfix mbm mart5" style="display:none">
+        <a href="#" class="detailLink h7 f10">Add some detail</a>
+        <div class="field bodyField hidden hideVisually">
+          <span class="fieldItem text">
+            <textarea
+              name="questionBody"
+              class="questionBody"
+              maxlength="1000"
+              placeholder="Add some detail about your question"></textarea>
+            <div id="error_questionBody_ask_mini_form" class="qa_error typeWarning h7 hideFully hidden"></div>
+          </span>
+        </div>
+        <div class="line mts mart5">
+          <div class="col cols11">
+            <span class="fieldItem select">
+              <select class="" name="categoryId" id="categoryId" >
+<option value="" >Select a category</option>
+<optgroup class="" label="Home Buying" id="">
+  <option value="37" selected="selected">Home Buying</option>
+<option value="58" >Investment Properties</option>
+<option value="43" >Foreclosure</option>
+<option value="54" >Home Insurance</option>
+<option value="56" >Credit Score</option>
+<option value="60" >Military Movers</option>
+
+</optgroup>
+<optgroup class="" label="Property Q&A" id="">
+  <option value="53" >Property Q&A</option>
+
+</optgroup>
+<optgroup class="" label="Home Selling" id="">
+  <option value="38" >Home Selling</option>
+
+</optgroup>
+<optgroup class="" label="Local Info" id="">
+  <option value="27" >General Area</option>
+<option value="48" >In My Neighborhood</option>
+<option value="34" >Parks & Recreation</option>
+<option value="28" >Quality of Life</option>
+<option value="30" >Schools</option>
+<option value="33" >Shopping & Local Amenities</option>
+<option value="29" >Traffic & Public Transportation</option>
+<option value="31" >Crime & Safety</option>
+<option value="32" >Entertainment & Nightlife</option>
+<option value="55" >Moving</option>
+<option value="41" >Curb Appeal</option>
+
+</optgroup>
+<optgroup class="" label="Financing" id="">
+  <option value="39" >Financing</option>
+
+</optgroup>
+<optgroup class="" label="Rentals" id="">
+  <option value="50" >Rental Basics</option>
+<option value="57" >Rentals</option>
+<option value="52" >For Rent</option>
+<option value="51" >Rent vs Buy</option>
+
+</optgroup>
+<optgroup class="" label="Market Conditions" id="">
+  <option value="35" >Market Conditions</option>
+
+</optgroup>
+<optgroup class="" label="Resources" id="">
+  <option value="36" >Using Trulia</option>
+<option value="40" >Tech Tips</option>
+<option value="49" >How To...</option>
+
+</optgroup>
+<optgroup class="" label="Home Ownership" id="">
+  <option value="59" >Home Ownership</option>
+<option value="47" >Design & Decor</option>
+<option value="45" >Remodel & Renovate</option>
+<option value="46" >Going Green</option>
+
+</optgroup>
+<optgroup class="" label="Agent2Agent" id="">
+  <option value="42" >Agent2Agent</option>
+
+</optgroup>
+<optgroup class="" label="Fun" id="">
+  <option value="44" >Celebrity Homes</option>
+
+</optgroup>
+
+</select>
+
+            </span>
+          </div>
+          <div class="col lastCol">
+            <span class="fieldItem text">
+              <input type="text" size="23" id="questionLocation" class="autosuggest_location"
+                name="questionLocation" value="" autocomplete="off"
+                placeholder="Miracle Mile, Los Angeles, CA"
+                data-focus-placeholder="Hood, ZIP or City/State"
+                title="Hood, ZIP or City/State" >
+            </span>
+          </div>
+        </div>
+        <input type="hidden" value="87327" data-default="87327" name="questionLocationId" id="questionLocationId" class="autosuggest_location_value">
+      </div>
+      <div id="error_questionCategory_ask_mini_form" class="qa_error typeWarning h7 hideFully hidden"></div>
+      <div id="error_questionRecaptcha_ask_mini_form" class="qa_error typeWarning h7 hideFully hidden"></div>
+      <div class="mtm mart10">
+        <input type="button" value="Get an answer" class="btn btn-primary btnPrimary btnFullWidth" id="get_answer" style="width:100%">
+      </div>
+      <input type="hidden" name="from_where" value="rightRail" >
+      <input type="hidden" name="suffix" value="_ask_mini_form" >
+      <input type="hidden" name="questionEmail" id="questionEmail" value="1">
+      <input type="hidden" name="recaptcha_challenge" value="">
+      <input type="hidden" name="recaptcha_response" value="">
+      <div id="recaptcha_ask_mini_form_modal" class="modal box boxBasic boxHighlight backgroundBasic pam" style="position:fixed;">
+        <div class="boxBody mtm">
+          <button class="boxClose" style="box-shadow:none;"><span role="presentation">&times;</span><span class="hideVisually">Close</span></button>
+          <div id="recaptchaWrapper_ask_mini_form"></div>
+          <div id="recaptchaSubmit_ask_mini_formWrapper" class="mts mrs" style="float:right"><input type="submit" value="Submit" class="btn btnPrimary pts" id="askQuestionMiniForm_ask_mini_form_submit"></div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div id="ad_right_rail_bottom" class="ad300x250flex"></div>
+<div id="ad_dtl16" class="ad300x250"></div>
+
+
+        
+        <table border="0" cellspacing="0" cellpadding="0" class="hidden new_popup beingModal popup_table " id="error_box" onclick="doNothing(event);">
+  <tr>
+    <td class="popup_top_left">
+      <div class="trulia_popup_c">
+        <div class="trulia_popup popup_background">
+          <div class="trulia_popup_content">
+          <div class="h4 typeEmphasize clearfix ">
+            <div class="fleft" id="error_box_popup_header" style="float: left;">Report Listing Error</div>
+            <a href="" id="error_box_popup_closer" onclick="toggle_menu(event, 'error_box', 0); return false;"
+              class="container-close notlink " style="position: absolute;" title="Close">&nbsp;</a>
+          </div>
+          <div style="clear: both; display: block; height: 0; visibility: hidden;"></div>
+          <div class="clearfix ">
+            <div id="error_box_content">
+  <div class="property_info_detail_address">824 South Ridgeley Drive, Los Angeles CA</div>
+
+  <div style="clear:both;"></div>
+  <div class="property_info_row_error_type">
+    <div class="property_info_row_label">Error Type:</div>
+
+    <div class="property_info_row_colspan_2 property_info_row_ext_height">
+      
+      <select name="flag_type" id="flag_type" style="width:170px;" onchange="trulia.report_listing.error_type_change(this)" >
+        <option value="" selected="selected">Please select...</option>
+        <option value="property_sold">Property Sold/Withdrawn</option>
+        <option value="price_has_changed">Price has changed</option>
+        <option value="incorrect_listing_agent">Incorrect Agent/Broker</option>
+        <option value="link_does_not_work">Link Doesn't Work</option>
+        <option value="incorrect_photo">Incorrect Photo</option>
+        <option value="incorrect_tags">Incorrect Tags</option>
+        <option value="incorrect_property_details">Incorrect Property Details</option>
+        <option value="incorrect_map">Incorrect Map</option>
+        <option value="other">Other</option>
+      </select>
+
+    </div>
+  </div>
+
+  <div style="clear:both;"></div>
+  <div id="property_detail_fields" style="display:none;">
+    <div class="property_info_row dark_lolite bold">
+      <div class="property_info_row_label">&nbsp;</div>
+      <div class="property_info_row_org_val">Current</div>
+      <div class="property_info_row_new_val">Revised</div>
+    </div>
+    <div style="clear:both;"></div>
+
+    <div class="property_info_row">
+      <div class="property_info_row_label">Price:</div>
+
+      <div class="property_info_row_org_val">$0</div>
+
+      <div class="property_info_row_new_val_price">$<input type="text" id="property_detail_price" value="" /></div>
+    </div>
+
+    <div style="clear:both;"></div>
+    <div class="property_info_row">
+      <div class="property_info_row_label">Property Type:</div>
+
+      <div class="property_info_row_org_val">Single-Family Home</div>
+
+      <div class="property_info_row_new_val_price property_info_row_ext_height">
+        <select id="property_detail_type" name="property_detail_type">
+          <option selected="" value="">Select One</option>
+          <option value="Single-Family Home">Single-Family Home</option>
+          <option value="Condo">Condo</option>
+          <option value="Townhouse">Townhouse</option>
+          <option value="Coop">Coop</option>
+          <option value="Apartment">Apartment</option>
+          <option value="Loft">Loft</option>
+          <option value="TIC">TIC</option>
+          <option value="Apartment/Condo/Townhouse">Apartment/Condo/Townhouse</option>
+          <option value="Mobile/Manufactured">Mobile/Manufactured</option>
+          <option value="Farm/Ranch">Farm/Ranch</option>
+          <option value="Lot/Land">Lot/Land</option>
+          <option value="Multi-Family Home">Multi-Family</option>
+          <option value="Income/Investment">Income/Investment</option>
+          <option value="Houseboat">Houseboat</option>
+          <option value="Unknown">Unknown</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="clear:both;"></div>
+    <div class="property_info_row">
+      <div class="property_info_row_label">Listing Type:</div>
+
+      <div class="property_info_row_org_val">--</div>
+
+      <div class="property_info_row_new_val_price property_info_row_ext_height">
+        <select id="property_detail_listing_type" name="property_detail_listing_type">
+          <option selected="" value="">Select One</option>
+          <option value="resale">Resale</option>
+          <option value="newhome">New Home</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="clear:both;"></div>
+    <div class="property_info_row">
+      <div class="property_info_row_label">Beds:</div>
+      <div class="property_info_row_org_val">3</div>
+      <div class="property_info_row_new_val"><input type="text" id="property_detail_beds" value="" /></div>
+    </div>
+
+    <div style="clear:both;"></div>
+    <div class="property_info_row">
+      <div class="property_info_row_label">Baths:</div>
+      <div class="property_info_row_org_val">1</div>
+      <div class="property_info_row_new_val"><input type="text" id="property_detail_baths" value="" /></div>
+    </div>
+
+    <div style="clear:both;"></div>
+    <div class="property_info_row">
+      <div class="property_info_row_label">Sqft:</div>
+      <div class="property_info_row_org_val">2,112</div>
+      <div class="property_info_row_new_val"><input type="text" id="property_detail_sqft" value="" /></div>
+    </div>
+
+    <div style="clear:both;"></div>
+    <div class="property_info_row">
+      <div class="property_info_row_label">Lot size:<br /><span class="tiny">(acres)</span></div>
+      <div class="property_info_row_org_val">n/a</div>
+      <div class="property_info_row_new_val"><input type="text" id="property_detail_lot_size" value="" /></div>
+    </div>
+
+    <div style="clear:both;"></div>
+    <div class="property_info_row">
+      <div class="property_info_row_label">Year Built:</div>
+      <div class="property_info_row_org_val">1924</div>
+      <div class="property_info_row_new_val"><input type="text" id="property_detail_year_built" value="" /></div>
+    </div>
+
+    <div style="clear:both;"></div>
+  </div>
+
+  <div id="property_more_details">
+    <div class="property_info_row">
+      <div class="property_info_row_label">Details:</div>
+
+      <div class="property_info_row_colspan_2">
+        <textarea id="flag_details" cols="20" rows="5" style="width:270px;" ></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div style="clear:both;"></div>
+  <div id="property_dispute_edits" style="display:none;">
+    <div class="property_info_row">
+      <div class="property_info_row_label">Your name</div>
+
+      <div class="property_info_row_colspan_2">
+        <input id="user_name" style="width:263px;" type="text" size="23" value="" />
+      </div>
+    </div>
+  </div>
+
+  <div style="clear:both;"></div>
+  <div class="property_info_row">
+    <div class="property_info_row_label">Your email<br/><span class="tiny">(optional):</span></div>
+
+    <div class="property_info_row_colspan_2">
+      <input id="flag_email" style="width:263px;" type="text" size="23" value="" />
+    </div>
+  </div>
+
+  <div style="clear:both;"></div>
+  <div class="clearfix">
+    <table align="center" class="bottom_two_btns">
+    <tr><td class="left">
+      <a style="" class="popup_cancel_link" href="" 
+        onclick="trulia.report_listing.close(); return false;">Cancel</a>
+    </td><td class="right padt10">
+        <div class="button"><a class="orange" onclick="trulia.report_listing.send(); return false;"  href=""><span>Send</span></a></div>
+    </td></tr>
+    </table>
+  </div>
+  <div style="clear:both;"></div>
+  <input type="hidden" id="flag_property_id" value="3910533" />
+  <input type="hidden" id="flag_site_id" value="" />
+  <input type="hidden" id="property_hash" value="d38d4af2bb3d181e3fa9ad32fa55" />
+  <input type="hidden" id="property_state_code" value="CA" />
+  <input type="hidden" id="property_status" value="Assessor" />
+  <input type="hidden" id="property_detail_type_org" value="Single-Family Home" />
+  <input type="hidden" id="property_detail_listing_type_org" value="--" />
+  <input type="hidden" id="property_detail_status_org" value="Unknown" />
+  <input type="hidden" id="property_detail_price_org" value="0" />
+  <input type="hidden" id="property_detail_beds_org" value="3" />
+  <input type="hidden" id="property_detail_baths_org" value="1" />
+  <input type="hidden" id="property_detail_sqft_org" value="2,112" />
+  <input type="hidden" id="property_detail_lot_size_org" value="n/a" />
+  <input type="hidden" id="property_detail_year_built_org" value="1924" />
+  <input type="hidden" id="istp" value="" />
+  <input type="hidden" id="user_type" value="" />
+  <input type="hidden" id="user_id" value="" />
+  <input type="hidden" id="property_data" value="ZGlyPVBEUCZjb250cm9sbGVyPVNvbGRQRFAmYWN0aW9uPWluZGV4JnN0YXRlPUNhbGlmb3JuaWEmcHJvcGNvZGU9c29sZCZjaXR5PUxvc19BbmdlbGVzJnByb3BlcnR5SWQ9MzkxMDUzMyZzZW9hZGRyZXNzPTgyNC1TLVJpZGdlbGV5LURyLUxvcy1BbmdlbGVzLUNBLTkwMDM2JnN0YXR1cz1Tb2xk" />
+</div>
+
+<div id="error_box_status" style="display:none;">
+  <div id="error_box_status_msg"></div>
+  <div style="margin: 20px auto 0 auto; width:60px;">
+    <div class="button" style="width:60px;margin:15px auto"><a href="" class="orange"  onclick="trulia.report_listing.close(); return false;"><span>Done</span></a></div>
+  </div>
+</div>
+
+
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0" class="hidden new_popup beingModal popup_table " id="ask_question_toolbox_popup" onclick="doNothing(event);">
+  <tr>
+    <td class="popup_top_left">
+      <div class="trulia_popup_c">
+        <div class="trulia_popup popup_background">
+          <div class="trulia_popup_content">
+          <div class="h4 typeEmphasize clearfix ">
+            <div class="fleft" id="ask_question_toolbox_popup_popup_header" style="float: left;">Ask a question about this property</div>
+            <a href="" id="ask_question_toolbox_popup_popup_closer" onclick="toggle_menu(event, 'ask_question_toolbox_popup', 0); return false;"
+              class="container-close notlink " style="position: absolute;" title="Close">&nbsp;</a>
+          </div>
+          <div style="clear: both; display: block; height: 0; visibility: hidden;"></div>
+          <div class="clearfix ">
+            <div class="got_question_container mart10" id="ask_question_toolbox_popup" style="overflow:hidden;">
+  <div id="ask_question_popup_from_contact_agent" class="hidden cols22">Sorry, we couldn’t find contact information for this agent.  Try asking your question on Trulia Voices  below.</div>
+  <div class="feedback_message_container"></div>
+  <form action="/ask/" method="post" id="ask_question_form_TB">
+    <h3 class="marb10 h5 f12" style="font-weight:normal;"><strong>Did you know?</strong> You can ask the Trulia Voices community about this property to get information and advice from <strong>real estate experts and locals</strong>.</h3>
+    <div id="error_summary_TB" style="font-size:10px;"></div>
+    <div class="marb10">
+      <div class="clearfix">
+        <div class="text_counter" style="margin-right:20px;">
+          <span class="chars_left" id="questionTitleCounter_TB">150</span> characters left
+        </div>
+        <label for="questionTitle_TB">Question</label>
+      </div>
+      <textarea name="questionTitle" id="questionTitle_TB"
+        onkeyup="textCounter(this,'questionTitleCounter_TB', 150);"
+        onfocus="handle_edit_box(this,'Ask real estate experts,locals, and friends...',true)"
+        onblur="handle_edit_box(this,'Ask real estate experts,locals, and friends...',false)"
+        maxlength="150" rows="2" cols="43"  style="height:55px;color:#999;" class="cols23">Ask real estate experts,locals, and friends...</textarea>
+        <div id="error_questionTitle_TB"></div>
+    </div >
+    <div class="clearfix">
+      <div class="text_counter" style="margin-right:20px;">
+        <span class="chars_left" id="questionBodyCounter_TB">1000</span> characters left
+      </div>
+      <label for="questionBody_TB">More Details <span style="color:#666;font-weight:normal;">  (Optional)</span></label>
+    </div>
+    <textarea maxlength="1000" rows="4" cols="43" name="questionBody" id="questionBody_TB" style="height:75px;color:#999;" class="cols23"
+      onkeyup="textCounter(this,'questionBodyCounter_TB', 1000);"
+      onfocus="handle_edit_box(this,'Optional details about your question',true)"
+      onblur="handle_edit_box(this,'Optional details about your question',false)"
+    >Optional details about your question</textarea>
+    <div class="f10 tcenter pad5" >This question is about this property: http://www.trulia.com/homes/California/Los_Angeles/sold/3910533-824-S-Ridgeley-Dr-Los-Angeles-CA-90036</div>
+    <div id="error_questionBody_TB"></div>
+    <div id="questionEmailWrapper_TB">
+      <input type="checkbox" name="questionEmail" id="questionEmail_TB" checked="checked" />&nbsp;
+      <label style="display:inline;"  for="questionEmail_TB">Get email alerts as people answer my question</label>
+    </div>
+
+    <div class="button" style="margin: 10px auto 0 auto; width: 50px; height:25px;">
+      <a href="" class="orange" style="" onclick="o_track_ql_click('AskQuestForm|AskCommunity'); $('#ask_question_form_TB').submit(); return false;">
+        <span>ASK!</span>
+      </a>
+      <input type="submit" class="transparent_btn hidden ask_question_submit_button">
+    </div>
+    <input type="hidden" name="from" value="details" />
+    <input type="hidden" name="from_where" value="details_open_form" />
+    <input type="hidden" name="from_id" value="3910533" />
+    <input type="hidden" name="from_type" value="property" />
+    <input type="hidden" name="from_url" value="http://www.trulia.com/homes/California/Los_Angeles/sold/3910533-824-S-Ridgeley-Dr-Los-Angeles-CA-90036" />
+    <input type="hidden" name="questionLocation" value="Los Angeles, CA" />
+    <input type="hidden" name="categoryId" value="53" />
+    <input type="hidden" name="fs" value="1" />
+  </form>
+</div>
+
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0" class="hidden new_popup beingModal popup_table " id="generic_confirmation_popup" onclick="doNothing(event);">
+  <tr>
+    <td class="popup_top_left">
+      <div class="trulia_popup_c">
+        <div class="trulia_popup popup_background">
+          <div class="trulia_popup_content">
+          <div class="h4 typeEmphasize clearfix ">
+            <div class="fleft" id="generic_confirmation_popup_popup_header" style="float: left;">Success!</div>
+            <a href="" id="generic_confirmation_popup_popup_closer" onclick="toggle_menu(event, 'generic_confirmation_popup', 0); return false;"
+              class="container-close notlink " style="position: absolute;" title="Close">&nbsp;</a>
+          </div>
+          <div style="clear: both; display: block; height: 0; visibility: hidden;"></div>
+          <div class="clearfix ">
+            <div id="generic_confirmation_popup_content">
+</div>
+<div style="margin: 10px auto;width: 60px;">
+  <div class="button2 done_button">
+    <a href="" class="orange btn btnPrimary btnSml" style=""  onclick="toggle_menu(event, 'generic_confirmation_popup', 0); return false;" >
+      <span id="generic_confirmation_popup_button_title">DONE</span>
+    </a>
+    <input type="submit" class="transparent_btn" />
+  </div>
+</div>
+
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+      </aside>
+
+      
+      <div id="pdpMainDiv" class="main" style="width:650px;">
+        
+        
+
+    
+  <div class="line"><div id="ad_credit"></div></div>
+  
+
+
+<div class="mtl">
+  
+  
+  
+        
+
+
+  
+  
+      <h2 class="pbn mbn h5">
+      Property Taxes and Assessment
+      <span class="typeWeightNormal typeLowlight">for 824 S Ridgeley Dr </span>
+    </h2>
+  
+      <hr class="mvn">
+    <table class="table tableRowBorderedTop tableRowBorderedBottom txtL mtn" >
+    <thead>
+	    <th class="pll backgroundLowlight" style="width: 20%;">
+	      Year
+	    </th>
+      <th class="backgroundLowlight" style="width: 20%;">Tax</th>
+      <th style="width: 10%"></th>
+      <th style="width: 25%">Assessment</th>
+      <th style="width: 25%;">Market</th>
+  </div>
+  </thead>
+  <tbody>
+      <tr>
+      <td class="pll backgroundLowlight"> 2015 </td>
+      <td class="backgroundLowlight">
+        <span class="typeEmphasize">$4,052</span>
+      </td>
+      <td></td>
+      <td >
+              $324,884&nbsp;
+                <span class="taxInfoAssess" data-year="2015" data-tooltip-skin="tooltipDark">
+          <i class="iconInfo"></i>
+        </span>
+                    </td>
+        <td>
+              <span class="typeEmphasize">N/A</span>
+            </td>
+  </tr>
+    <div id="taxTipAssessment2015" class="tooltip" style="left:400px !important">
+	  <div class="line">
+		  <div class="col cols8">
+		    Land
+		  </div>
+		  <div class="col cols8">
+	      Improvement
+	    </div>
+	    <div class="col cols8">
+	      Total
+	  </div>
+	  </div>
+	  <div class="line">
+	    <div class="col cols6">
+	      $166,968
+	    </div>
+	    <div class="col cols2">
+	      +	    </div>
+	    <div class="col cols6">
+	      $157,916
+	    </div>
+	    <div class="col cols2">
+	      =
+	    </div>
+	    <div class="col cols8">
+	      $324,884
+	    </div>
+	  </div>
+	  </div>
+  </div>
+        </tbody>
+  </table>
+
+	<div class="h8 typeLowlight plm">Source: Public Records</div>
+</div>
+
+
+  
+    <hr class="divider">
+      <div class="mtm containerFluid" style="width:670px; margin:0 auto" data-role="nearbyHomesMapContainer"></div>
+      <div class="txtC">
+    <a href="http://www.trulia.com/CA/Los_Angeles/" title="View all Los Angeles real estate">View all Los Angeles real estate</a>
+  </div>
+  <hr class="divider">
+  
+<h2 id="contactInfo" class="typeEmphasize mtl mbm">Contact Info</h2>
+       <div class="box boxHighlight pal mvm">
+  
+         <div class="adProxy"
+       data-layout="horizontal"
+       data-position="bottom_center"
+       data-show-listing-agent="true"
+       data-show-user-fields="true"
+       data-hide-coreg-optin="false"
+  >
+    <div class="txtC pal"><i class="iconSpinner txtC"></i></div>
+  </div>
+  </div>
+
+      </div>
+    </div>
+
+    
+  <div data-role="discovery-container"></div>
+  <div class="pam">
+    <div data-role="discovery-loading-indicator" class="discoverySpinner iconLargeSpinner centerHorizontal"></div>
+  </div>
+
+
+  </div>
+  </div>
+
+  
+    
+      
+    
+    <div class="container">
+      <div id="ad_dtl3" class="ad728x90"></div>
+    </div>
+  </section>
+
+
+  
+  
+          <footer class="pg-footer pan">
+  
+    <div class="backgroundLowlight content contentResponsive">
+    <div class="media mvn prxxl pbl">
+      <img src="http://static.trulia-cdn.com/images/footer/discovery-ill.svg" width="160" height="100" class="h4 mediaImg linkTypeReversed typeEmphasize">
+      <div class="mediaBody h7 ptl prxl prxxl">
+        This is a Single-Family Home located at 824 S Ridgeley Dr, Los Angeles CA, <a href='/property-sitemap/CA/Los_Angeles/90036/'>90036</a>. 824 S Ridgeley Dr has  has 3 beds, 1 bath, and approximately 2,112 square feet. The property has a lot size of 6,734 sqft and was built in 1924. 824 <a href='/property-sitemap/CA/Los_Angeles/90036/South_Ridgeley_Drive/'>S Ridgeley Dr</a> is in the <a href='/real_estate/Miracle_Mile-Los_Angeles/7206/'>Miracle Mile</a> neighborhood in <a href='/real_estate/Los_Angeles-California/'>Los Angeles</a> and in ZIP Code <a href='/real_estate/90036-Los_Angeles/'>90036</a>. The average sale price for <a href='/sold/7206_nh/'>Miracle Mile sold homes</a> is $936,666. The average sale price for <a href='/sold/90036_zip/'>90036 sold homes</a> is $1,484,500. The average sale price for <a href='/sold/Los_Angeles,CA/'>Los Angeles sold homes</a> is $758,851. 
+      </div>
+    </div>
+  </div>
+  
+    <div class="backgroundInverse content contentResponsive phl">
+      <div class="h3 typeReversed pvs">Communities near 824 South Ridgeley Drive, Los Angeles, CA</div>
+
+      <hr class="divider pvs mvn">
+  </div>
+  
+  <div class="backgroundInverse content contentResponsive pbm phl">
+    <div class="containerFluid phn">
+      <div class="row typeReversed">
+                      <div class="xsCol24 smCol4 mdCol4 lrgCol4">
+              <div class="listHeader h6 mrl mtm">Los Angeles & Nearby Cities</div>
+<div class="listContent">
+          <div class="pvs">
+      <a class="linkLowlight" href="/CA/West_Hollywood/" title="West Hollywood Real Estate">West Hollywood Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Universal_City/" title="Universal City Real Estate">Universal City Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Burbank/" title="Burbank Real Estate">Burbank Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Studio_City/" title="Studio City Real Estate">Studio City Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div id="toggleColumn0" class="hideVisually">
+        <div class="pvs">
+      <a class="linkLowlight" href="/CA/Beverly_Hills/" title="Beverly Hills Real Estate">Beverly Hills Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Valley_Village/" title="Valley Village Real Estate">Valley Village Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Culver_City/" title="Culver City Real Estate">Culver City Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/North_Hollywood/" title="North Hollywood Real Estate">North Hollywood Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Sherman_Oaks/" title="Sherman Oaks Real Estate">Sherman Oaks Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Sun_Valley/" title="Sun Valley Real Estate">Sun Valley Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Inglewood/" title="Inglewood Real Estate">Inglewood Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Glendale/" title="Glendale Real Estate">Glendale Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Van_Nuys/" title="Van Nuys Real Estate">Van Nuys Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Santa_Monica/" title="Santa Monica Real Estate">Santa Monica Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Venice/" title="Venice Real Estate">Venice Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Montrose/" title="Montrose Real Estate">Montrose Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Encino/" title="Encino Real Estate">Encino Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Panorama_City/" title="Panorama City Real Estate">Panorama City Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Marina_del_Rey/" title="Marina del Rey Real Estate">Marina del Rey Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/La_Crescenta/" title="La Crescenta Real Estate">La Crescenta Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+  
+  </div>
+  <a href="#toggleColumn0" class="toggle typeHighlight h7" data-toggle-text="Less">More <i class="iconDownOpen"></i></a>
+</div>
+            </div>
+                      <div class="xsCol24 smCol4 mdCol4 lrgCol4">
+              <div class="listHeader h6 mrl mtm">Los Angeles Neighborhoods</div>
+<div class="listContent">
+          <div class="pvs">
+      <a class="linkLowlight" href="/CA/Los_Angeles,7200,La_Brea/" title="La Brea Real Estate">La Brea Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Los_Angeles,7199,Carthay_Square/" title="Carthay Square Real Estate">Carthay Square Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Los_Angeles,7201,CBS_Television_City/" title="CBS Television City Real Estate">CBS Television City Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Los_Angeles,7205,Greater_Wilshire_Hancock_Park/" title="Greater Wilshire / Hancock Park Real Estate">Greater Wilshire / Hancock Park Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div id="toggleColumn1" class="hideVisually">
+        <div class="pvs">
+      <a class="linkLowlight" href="/CA/Los_Angeles,7212,Pico_Robertson/" title="Pico - Robertson Real Estate">Pico - Robertson Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Los_Angeles,7214,Mid_City/" title="Mid City Real Estate">Mid City Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Los_Angeles,7198,Beverly_Center/" title="Beverly Center Real Estate">Beverly Center Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Los_Angeles,7202,Melrose/" title="Melrose Real Estate">Melrose Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Los_Angeles,7203,Hollywood/" title="Hollywood Real Estate">Hollywood Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Los_Angeles,7221,Jefferson/" title="Jefferson Real Estate">Jefferson Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Los_Angeles,10498,McManus/" title="McManus Real Estate">McManus Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Los_Angeles,7213,Beverlywood/" title="Beverlywood Real Estate">Beverlywood Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Los_Angeles,7207,Wilshire_Center_Koreatown/" title="Wilshire Center / Koreatown Real Estate">Wilshire Center / Koreatown Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Los_Angeles,10499,Lucerne_Higuera/" title="Lucerne - Higuera Real Estate">Lucerne - Higuera Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Los_Angeles,7220,Baldwin_Hills/" title="Baldwin Hills Real Estate">Baldwin Hills Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Los_Angeles,7190,Cheviot_Hills/" title="Cheviot Hills Real Estate">Cheviot Hills Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Los_Angeles,7217,Crenshaw/" title="Crenshaw Real Estate">Crenshaw Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Los_Angeles,7185,Palms/" title="Palms Real Estate">Palms Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Los_Angeles,10503,Blair_Hills/" title="Blair Hills Real Estate">Blair Hills Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/CA/Los_Angeles,10512,Downtown/" title="Downtown Real Estate">Downtown Real Estate</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+  
+  </div>
+  <a href="#toggleColumn1" class="toggle typeHighlight h7" data-toggle-text="Less">More <i class="iconDownOpen"></i></a>
+</div>
+            </div>
+                      <div class="xsCol24 smCol4 mdCol4 lrgCol4">
+              <div class="listHeader h6 mrl mtm">Los Angeles Property Types</div>
+<div class="listContent">
+          <div class="pvs">
+      <a class="linkLowlight" href="/for_sale/Los_Angeles,CA/SINGLE-FAMILY_HOME_type/" title="Los Angeles Single-Family Homes">Los Angeles Single-Family Homes</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/for_sale/Los_Angeles,CA/CONDO_type/" title="Los Angeles Condos">Los Angeles Condos</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/for_sale/Los_Angeles,CA/TOWNHOUSE_type/" title="Los Angeles Townhomes">Los Angeles Townhomes</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/for_sale/Los_Angeles,CA/COOP_type/" title="Los Angeles Coops">Los Angeles Coops</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div id="toggleColumn2" class="hideVisually">
+        <div class="pvs">
+      <a class="linkLowlight" href="/for_sale/Los_Angeles,CA/LOFT_type/" title="Los Angeles Lofts">Los Angeles Lofts</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/for_sale/Los_Angeles,CA/APARTMENT|CONDO|TOWNHOUSE_type/" title="Los Angeles Apartments/Condos/Townhomes">Los Angeles Apartments/Condos/Townhomes</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+  
+  </div>
+  <a href="#toggleColumn2" class="toggle typeHighlight h7" data-toggle-text="Less">More <i class="iconDownOpen"></i></a>
+</div>
+            </div>
+                      <div class="xsCol24 smCol4 mdCol4 lrgCol4">
+              <div class="listHeader h6 mrl mtm">Real Estate and Mortgage Guides</div>
+<div class="listContent">
+          <div class="pvs">
+      <a class="linkLowlight" href="/real_estate/Los_Angeles-California/" title="Los Angeles Real Estate Guide">Los Angeles Real Estate Guide</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/real_estate/Los_Angeles-California/schools/" title="Los Angeles Schools">Los Angeles Schools</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/home_prices/California/" title="California Home Prices">California Home Prices</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="/mortgage-rates/Los_Angeles,CA/" title="Los Angeles Mortgage">Los Angeles Mortgage</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div id="toggleColumn3" class="hideVisually">
+        <div class="pvs">
+      <a class="linkLowlight" href="/refinance-rates/Los_Angeles,CA/?loantype=refinance" title="Los Angeles Refinance">Los Angeles Refinance</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+  
+  </div>
+  <a href="#toggleColumn3" class="toggle typeHighlight h7" data-toggle-text="Less">More <i class="iconDownOpen"></i></a>
+</div>
+            </div>
+                      <div class="xsCol24 smCol4 mdCol4 lrgCol4">
+              <div class="listHeader h6 mrl mtm">Trulia Corporate</div>
+<div class="listContent">
+          <div class="pvs">
+      <a class="linkLowlight" href="http://www.trulia.com/about/" title="About Trulia">About Trulia</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="http://www.zillowgroup.com/about-zillow-group/" title="About Zillow Group"rel="nofollow">About Zillow Group</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="http://www.trulia.com/about/careers/" title="Careers">Careers</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="http://investors.zillowgroup.com/" title="Investor Relations"rel="nofollow">Investor Relations</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div id="toggleColumn4" class="hideVisually">
+        <div class="pvs">
+      <a class="linkLowlight" href="http://www.trulia.com/terms/advertisers/" title="Advertising Terms"rel="nofollow">Advertising Terms</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="http://www.trulia.com/privacy/" title="Privacy"rel="nofollow">Privacy</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="http://www.trulia.com/terms/" title="Terms of Use"rel="nofollow">Terms of Use</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="http://www.trulia.com/listings_quality_policy/" title="Listings Quality Policy"rel="nofollow">Listings Quality Policy</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="http://www.zillow.com/corp/SATerms.htm" title="Subscription Terms"rel="nofollow">Subscription Terms</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+            <div class="pvs">
+      <a class="linkLowlight" href="http://preferences-mgr.truste.com/?type=trulia&pid=trulia01&aid=trulia01" title="Ad Choices"rel="nofollow">Ad Choices</a><span class="breaker typeLowlight" style="opacity: .2;"> | </span>
+    </div>
+  
+  </div>
+  <a href="#toggleColumn4" class="toggle typeHighlight h7" data-toggle-text="Less">More <i class="iconDownOpen"></i></a>
+</div>
+            </div>
+                </div>
+    </div>
+  </div>
+  
+  
+  <div class="backgroundInverse content contentResponsive typeReversed phl">
+    <hr class="divider mvn">
+    <ul class="listInline man pbm ptm footer_nav">
+      <li><a class="h6 linkLowlight typeEmphasize" href="/">Buy</a></li>
+    <li><a class="h6 linkLowlight typeEmphasize" href="/sell/?ts=trulia&tscamp=footer_nav_sell">Sell</a></li>
+    <li><a class="h6 linkLowlight typeEmphasize" href="/rent/">Rent</a></li>
+    <li><a class="h6 linkLowlight typeEmphasize" href="/pre-approval/?omni_src=mortgage|global_footer_nav">Mortgage</a></li>
+    <li><a class="h6 linkLowlight typeEmphasize" href="/directory/">Find an Agent</a></li>
+  </ul>
+    <div><div class="typeLowlight h8 pbl">Copyright &copy; 2016 Trulia, Inc. All rights reserved. <a href="http://www.hud.gov/offices/fheo/index.cfm" rel="nofollow" class="linkLowlight"><span class="iconFHEO h6 pvs pls"></span>Fair Housing and Equal Opportunity.</a> Have a Question? Visit our <a href="http://www.trulia.com/help/" rel="nofollow" class="linkLowlight">Help Center</a> to find the answer.</div>
+</div>
+  </div>
+  
+</footer>
+<script>
+  $(document).ready(function () {
+    $('.toggle').truliaToggle();
+  });
+</script>
+      
+
+  
+ <script>
+ </script>
+  
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+                  var site_root = "/";
+                        var _SITE_ROOT = "/";
+                        var _IMAGE_SERVER_ROOT = "http://static.trulia-cdn.com";
+                        var _ENVIRONMENT = "PROD";
+                        var _feature_auth_popup_center_text_enabled = false;
+                        var _feature_auth_popup_form_toggle_buttons_enabled = false;
+                        var _feature_srp_hybrid_enabled = false;
+                        var _feature_pdp_for_sale_lead_upsell_v1_enabled = false;
+                        var _feature_moving_postlead_v1_enabled = false;
+                        var _feature_moving_postlead_v2_enabled = false;
+                        var _feature_lead_recommender_bypass_a_enabled = false;
+                        var _feature_txl2_enabled = false;
+                        var _feature_collab_post_lead_invite_to_board_enabled = false;
+                        var _feature_pdp_share_collab_enabled = false;
+                        var _feature_save_button_hover_copy_a_enabled = false;
+                        var _feature_save_button_hover_copy_b_enabled = false;
+                        var _feature_save_button_hover_copy_c_enabled = false;
+                        var _feature_srp_no_result_ui_v1_enabled = false;
+                        var _feature_rental_resume_post_lead_control_enabled = false;
+                        var _feature_rental_resume_post_lead_recommendedrentalresumerentalresumesentempty_enabled = true;
+                        var mortgage_coreg_qc_off = false;
+                        var mortgage_coreg_short_form_on = true;
+                        var mortgage_vu_lead_on = true;
+                        var mortgage_longform_on = true;
+                                            var _supports_my_trulia = 1;
+              
+      var qpn_NAMES =
+    {
+      'site':                'Trulia',
+      'site_possessive':     'Trulia\'s',
+      'mytrulia':            'My Trulia',
+      'email_domain':        'trulia.com',
+      'truliamap':           'TruliaMap',
+      'voices':              'Trulia Voices',
+      'account_source':      'trulia',
+      'secondary_subdomain': ''
+    },
+    _js_server_root       = 'http://static.trulia-cdn.com/javascript/I12_38/',
+    _release_version_tab  = 'I12_38',
+    _fb_app_id            = '183577541666001';
+
+var trulia = (typeof(trulia) !== "undefined") ? trulia : {};
+    trulia.is_agent_paid = '';
+    trulia.agent_user_id = '0';
+    trulia.tracking = trulia.tracking || {};
+    trulia.tracking.omniture_id = 'truliacom';
+    
+  </script>
+  
+
+    
+  <script>var _feature_txl2_enabled=true;</script>
+    <script src="http://static.trulia-cdn.com/javascript/I12_38/include/js/_built/combo/site_js.js"></script>
+  <script src="http://static.trulia-cdn.com/javascript/I12_38/include/js/_built/combo/global_nav.js"></script>
+  <script>
+        </script>
+
+
+
+  
+  
+<script>
+  trulia = trulia || {};
+  trulia.pdp = trulia.pdp || {};
+
+  window.TRULIA_MAPS_BOOTSTRAP = {"heatMapVersions":{"domain":"http:\/\/tiles.trulia.com","quiet_streets":{"uri":"tiles\/quiet_streets","version":"20160224"},"singles_living_alone":{"uri":"tiles\/singles_living_alone","version":"20160224"},"wildfires":{"uri":"tiles\/wildfires","version":"20160224"},"shopping":{"uri":"tiles\/shopping","version":"20160224"},"tornados":{"uri":"tiles\/tornados","version":"20160224"},"valuations":{"uri":"tiles\/valuations","version":"20160224"},"beauty":{"uri":"tiles\/beauty","version":"20160224"},"percent_married":{"uri":"tiles\/percent_married","version":"20160224"},"crime_heatmap":{"uri":"tiles\/crime_heatmap","version":"20160224"},"median_age":{"uri":"tiles\/median_age","version":"20160224"},"great_places_to_play":{"uri":"tiles\/great_places_to_play","version":"20160224"},"crime_email":{"uri":"tiles\/crime_email","version":"20160224"},"rental_prices":{"uri":"tiles\/rental_prices","version":"20160224"},"groceries":{"uri":"tiles\/groceries","version":"20160224"},"hurricanes":{"uri":"tiles\/hurricanes","version":"20160224"},"percent_multiunit":{"uri":"tiles\/percent_multiunit","version":"20160224"},"schools":{"uri":"tiles\/schools","version":"20160224"},"seismic_hazard":{"uri":"tiles\/seismic_hazard","version":"20160224"},"gyms":{"uri":"tiles\/gyms","version":"20160224"},"arts":{"uri":"tiles\/arts","version":"20160224"},"median_move_in_year":{"uri":"tiles\/median_move_in_year","version":"20160224"},"year_built":{"uri":"tiles\/year_built","version":"20160224"},"home_prices_sales_sqft":{"uri":"tiles\/home_prices_sales_sqft","version":"20160224"},"zipcode_labels":{"uri":"tiles\/zipcode_labels","version":"20160224"},"percent_college":{"uri":"tiles\/percent_college","version":"20160224"},"cafes":{"uri":"tiles\/cafes","version":"20160224"},"commute_time":{"uri":"tiles\/commute_time","version":"20160224"},"owner_occupied":{"uri":"tiles\/owner_occupied","version":"20160224"},"home_prices_sales":{"uri":"tiles\/home_prices_sales","version":"20160224"},"faults":{"uri":"tiles\/faults","version":"20160224"},"care_essentials":{"uri":"tiles\/care_essentials","version":"20160224"},"nightlife":{"uri":"tiles\/nightlife","version":"20160224"},"home_prices_listings_neighborhood":{"uri":"tiles\/home_prices_listings_neighborhood","version":"20160224"},"transit":{"uri":"tiles\/transit","version":"20160224"},"flood_zones":{"uri":"tiles\/flood_zones","version":"20160224"},"parcels":{"uri":"tiles\/parcels","version":"20160224"},"home_prices_listings":{"uri":"tiles\/home_prices_listings","version":"20160224"},"restaurants":{"uri":"tiles\/restaurants","version":"20160224"},"rental_prices_nolabel":{"uri":"tiles\/rental_prices_nolabel","version":"20160224"}},"mapTileServer":"http:\/\/tiles.trulia.com\/","commuteMapTileServer":"http:\/\/tiles.trulia.com\/"};
+
+  trulia.pdp.isAdproxyEnabled = true;
+  trulia.pdp.agentDisplayData = [];
+  trulia.pdp.leadFormDetails = {"name":"","phoneNumber":"","emailAddress":"","message":"I'm looking through sold properties in Los Angeles, and I found 824 S Ridgeley Dr, Los Angeles, CA 90036. I'd appreciate your insights on this or similar listings."};
+  trulia.pdp.isNearbyHomesMapEnabled = true
+  trulia.pdp.isMediacarouselDFPEnabled = false;
+  trulia.pdp.comparableProperties = {"forSale":[],"sold":[]};
+  trulia.pdp.foreclosureAgentDirectoryURL = "\/directory\/Los_Angeles-agent--22637\/?specialty=foreclosure_specialist";
+
+</script>
+  <script type="text/javascript">trulia = trulia || {};trulia.pdp = trulia.pdp || {};trulia.pdp.controllers = trulia.pdp.controllers || {};trulia.propertyData.set({"id":3910533,"mlsID":null,"agentName":null,"feedId":null,"hash":"d38d4af2bb3d181e3fa9ad32fa55","neighborhood":"Miracle Mile","neighborhoodId":7206,"zipCode":"90036","city":"Los Angeles","county":"Los Angeles","countyFIPS":"06037","stateCode":"CA","stateName":"California","latitude":34.05988,"longitude":-118.35115,"addressForDisplay":"824 South Ridgeley Drive, Los Angeles, CA","addressForUrl":"824-S-Ridgeley-Dr-Los-Angeles-CA-90036","streetNumber":"824","street":"S Ridgeley Dr","apartmentNumber":null,"urlType":null,"status":"Assessor","listingId":null,"locationId":"76102","type":"SINGLE-FAMILY HOME","typeDisplay":"Single-Family Home","numBedrooms":"3","numBathrooms":1,"numPartialBathrooms":null,"numFullBathrooms":1,"siteId":null,"siteUrl":null,"listingType":null,"dmaId":31,"claimed":null,"numBeds":3,"indexSource":"Assessor","isForeclosure":false,"isOpaqueBAL":false,"foreclosureStatus":"","isSrpFeatured":false,"price":null,"sqft":2112,"isRental":false,"isRentalCommunity":false,"rentalPartnerDisplayText":null,"hasStreetView":"-1","showStreetView":"1","blockStreetView":false,"walkScore":null,"photos":null,"adCampaign":null,"hasPhotos":false,"userHidden":null,"userLiked":null,"isUserSaved":null,"isAddressNotDisclosed":false,"_isDefault":true,"intersectionName":null,"agentClaimable":true,"pdpURL":"\/homes\/California\/Los_Angeles\/sold\/3910533-824-S-Ridgeley-Dr-Los-Angeles-CA-90036","thumbnail":null,"formattedPrice":"","shortDescription":"824 S Ridgeley Dr","formattedBedAndBath":"3bd, 1 full ba","formattedSqft":"2,112 sqft","dataPhotos":"{\"photos\":[],\"static_map_path\":\"http:\\\/\\\/maps.googleapis.com\\\/maps\\\/api\\\/staticmap?client=gme-truliainc&zoom=18&size=640x480&maptype=satellite&sensor=false&center=34.05988%2C-118.35115&signature=9TxtBbDdWnTdtvwRT7Fx_zAxz9E=\"}","isBuilder":false,"isBuilderCommunity":false,"isPlan":false,"isSpec":false,"isPromotedCommunity":false,"builderName":null,"builderCommunityId":null,"userClaimed":false,"truliaRank":null,"isSubsidized":false,"richMedia":[]});pdp_location_data = {"neighborhood":{"locationId":"87327","name":"Miracle Mile","locationType":"neighborhood","altId":"7206"},"state":{"locationId":"5","name":"California","locationType":"state","altId":"CA"},"county":{"locationId":"57","name":"Los Angeles County","locationType":"county","altId":"06037"},"city":{"locationId":"22637","name":"Los Angeles","locationType":"city","altId":"4396"},"propertyId":3910533,"addressHash":null,"address":"824 S Ridgeley Dr","zipCode":{"locationId":"76102","name":"90036","locationType":"zipCode","altName":"90036","altId":"90036"},"geohash":"9q5cfb7m4mf","latitude":34.05988,"longitude":-118.35115,"unknown":true,"isCountySupportsValuation":false};trulia.pdp.comps_markers = {"for sale":[],"sold":[]};trulia.pdp.streetViewBlocked = false;trulia.pdp.isCountySupportsValuation =  true;trulia.pdp.isInHighDemandRegion = false;trulia.pdp.walkScore = {};var _SPANLONG = pdp_location_data.longitude;var _SPANLAT  = pdp_location_data.latitude;var _CENLONG  = pdp_location_data.longitude;var _CENLAT   = pdp_location_data.latitude;var _LOCATION_UNKNOWN = pdp_location_data.unknown;var TruliaProTakeOverURL = "";var _dsapi = true;var _IS_SHOWING_MODAL = false;var _IMAGE_SERVER = 'http://static.trulia-cdn.com';var _JS_SERVER_ROOT = 'http://static.trulia-cdn.com/javascript/I12_38/';var _MAPTILE_SERVER = 'http://tiles.trulia.com/';var _HEATMAP_VERSIONS = {"domain":"http:\/\/tiles.trulia.com","quiet_streets":{"uri":"tiles\/quiet_streets","version":"20160224"},"singles_living_alone":{"uri":"tiles\/singles_living_alone","version":"20160224"},"wildfires":{"uri":"tiles\/wildfires","version":"20160224"},"shopping":{"uri":"tiles\/shopping","version":"20160224"},"tornados":{"uri":"tiles\/tornados","version":"20160224"},"valuations":{"uri":"tiles\/valuations","version":"20160224"},"beauty":{"uri":"tiles\/beauty","version":"20160224"},"percent_married":{"uri":"tiles\/percent_married","version":"20160224"},"crime_heatmap":{"uri":"tiles\/crime_heatmap","version":"20160224"},"median_age":{"uri":"tiles\/median_age","version":"20160224"},"great_places_to_play":{"uri":"tiles\/great_places_to_play","version":"20160224"},"crime_email":{"uri":"tiles\/crime_email","version":"20160224"},"rental_prices":{"uri":"tiles\/rental_prices","version":"20160224"},"groceries":{"uri":"tiles\/groceries","version":"20160224"},"hurricanes":{"uri":"tiles\/hurricanes","version":"20160224"},"percent_multiunit":{"uri":"tiles\/percent_multiunit","version":"20160224"},"schools":{"uri":"tiles\/schools","version":"20160224"},"seismic_hazard":{"uri":"tiles\/seismic_hazard","version":"20160224"},"gyms":{"uri":"tiles\/gyms","version":"20160224"},"arts":{"uri":"tiles\/arts","version":"20160224"},"median_move_in_year":{"uri":"tiles\/median_move_in_year","version":"20160224"},"year_built":{"uri":"tiles\/year_built","version":"20160224"},"home_prices_sales_sqft":{"uri":"tiles\/home_prices_sales_sqft","version":"20160224"},"zipcode_labels":{"uri":"tiles\/zipcode_labels","version":"20160224"},"percent_college":{"uri":"tiles\/percent_college","version":"20160224"},"cafes":{"uri":"tiles\/cafes","version":"20160224"},"commute_time":{"uri":"tiles\/commute_time","version":"20160224"},"owner_occupied":{"uri":"tiles\/owner_occupied","version":"20160224"},"home_prices_sales":{"uri":"tiles\/home_prices_sales","version":"20160224"},"faults":{"uri":"tiles\/faults","version":"20160224"},"care_essentials":{"uri":"tiles\/care_essentials","version":"20160224"},"nightlife":{"uri":"tiles\/nightlife","version":"20160224"},"home_prices_listings_neighborhood":{"uri":"tiles\/home_prices_listings_neighborhood","version":"20160224"},"transit":{"uri":"tiles\/transit","version":"20160224"},"flood_zones":{"uri":"tiles\/flood_zones","version":"20160224"},"parcels":{"uri":"tiles\/parcels","version":"20160224"},"home_prices_listings":{"uri":"tiles\/home_prices_listings","version":"20160224"},"restaurants":{"uri":"tiles\/restaurants","version":"20160224"},"rental_prices_nolabel":{"uri":"tiles\/rental_prices_nolabel","version":"20160224"}};var _SHOW_PARCEL_BOUNDARIES = 1;var thumbs_root = '';var _default_zoom_level = '15';var _default_map_view = 'G_MAP_TYPE';var _show_poi = '0';var direction = 0;var z_details_pg = 1;var showStreetview = true;var showAddressControl = true;</script><script src="//maps.google.com/maps/api/js?v=3.23&client=gme-truliainc&libraries=geometry"></script><script src="http://static.trulia-cdn.com/javascript/I12_38/include/js/_built/combo/maps_v3.js"></script><script>$(document).ready(function () {$('#mediaTabs').truliaTabs();if(window.location.hash.toLowerCase() === '#map'){$('#mediaTabs').truliaTabs({selected: 1});}$('.toggle').truliaToggle();$('.rating').rating();$('.oh_details, #listingDefinition').tooltip();$('.taxInfoAssess').each(function(){$(this).tooltip({anchor: 'bottom',offset: '-10x0',selector: '#taxTipAssessment' + $(this).data('year')});});$('.taxInfoMarket').each(function(){$(this).tooltip({anchor: 'bottom',offset: '-10x0',selector: '#taxTipMarket' + $(this).data('year')});});$('.pdpHeaderTooltip span').each(function(){$(this).tooltip();});$('#property_bar').sticky({'targetEl': $('#mediaTabs'),'toggleClass': 'hideVisually'});$('.pinit').attr('href', 'http://pinterest.com/pin/create/button/?url='+document.location.toString().replace(document.location.hash, '')+'&media=http://static.trulia-cdn.com/images/icons/no_photo_icon_lg.gif'+'&description='+escape(document.title));if (window.location.hash){switch (window.location.hash){case '#claim':location.href = _SITE_ROOT + "claim/agent/" + trulia.propertyData.get().id;break;case '#contact':trulia.ContactUser.showContactAgentPopup({}, 'details', 'LeadContactAgent');break;}}/*** Load the mortgage long form, using trulia pubsub.*/trulia.pubsub.subscribe('mortgage.longform.load:pdp', function(data) {require(['mortgage_longform/launcher'], function(Launcher) {var PostLeadView = Launcher(data.coreg_get_response, 'PostLead').start();var modal = new PostLeadView(data);modal.render();});});});</script>
+
+  <script>
+    var ad_proxy = trulia.namespace('ad_proxy');
+    ad_proxy.api_host = 'http://qcproxy.trulia.com';
+  </script>
+  
+
+  <script src="http://static.trulia-cdn.com/javascript/I12_38/include/js/_built/application/pdp/assessor/assessor.js"></script>
+
+
+
+
+  <script>
+  var runBeacon = function ()
+  {
+    try {
+      var tempurl = window.location.href;
+      var regex = new RegExp("((http|https)://)([a-zA-Z0-9]+\.)(.*)");
+      var comurl = tempurl.match(regex);
+      var beacon_url = comurl[3]+comurl[4];
+
+      try {
+        var id = getCookie('tlftmusr');
+      } catch (e) {
+        var id = '';
+      }
+
+      COMSCORE.beacon({
+        c1:2,
+        c2:6036206,
+        c3:"",
+        c4:beacon_url,
+        c5:"",
+        c6:"",
+        c15:id
+      });
+    } catch (e) {}
+  };
+</script>
+
+<script>
+      require(['http://b.scorecardresearch.com/beacon.js'], function() {
+      runBeacon();
+    });
+  </script>
+
+<noscript>
+  <img src="http://b.scorecardresearch.com/p?c1=2&c2=6036206&cv=2.0&cj=1" />
+</noscript>
+
+
+
+
+<script src="http://static.trulia-cdn.com/javascript/I12_38/include/js/library/3rd_party/jquery-ui/jquery-ui-1.8.23.min.js"></script>
+
+  
+  
+  <script type="text/javascript">
+  trulia.PixelTracking.firePixel(trulia.PixelTracking.TYPE_GLOBAL_REMARKETING);
+trulia.PixelTracking.firePixel(trulia.PixelTracking.TYPE_UNIQUE_CONVERSION);
+
+
+  <!--[if !IE]> Script below Copyright 1997-2004 Omniture, Inc. <![endif]-->
+  s.channel = unescape('Find%20Homes');
+  s.events = unescape('event2%2Cevent5');
+  s.eVar1 = unescape('CA.Los%20Angeles');
+  s.eVar2 = unescape('CA%2CLos%20Angeles%2CMiracle%20Mile%2C90036');
+  s.prop1 = unescape('CA%2CLos%20Angeles%2CMiracle%20Mile%2C90036');
+  s.prop4 = unescape('3910533');
+  s.eVar7 = unescape('3910533');
+  s.eVar34 = unescape('Assessor%7CUnClaimedStatus%7CNonProStatus%7CUnBranded');
+  s.eVar3 = unescape('');
+  s.eVar35 = unescape('LargeAbsentMultipleAbsent');
+  s.eVar21 = unescape('Not%20Home%20Owner%20Claimed');
+  s.eVar8 = unescape('');
+  s.pageType = unescape('pdp');
+  s.pageName = unescape('details%3Aassessor%3AOverview');
+  s.prop58 = unescape('details%3Aassessor%3AOverview');
+  s.eVar58 = unescape('details%3Aassessor%3AOverview');
+  s.eVar15 = unescape('403');
+  s.eVar19 = unescape('cbs000');
+  s.eVar6 = unescape('2016.13');
+  s.eVar18 = unescape('37a1435adb27390f98c974e3424fc22d');
+  s.eVar5 = unescape('16040137a1435adb27390f98c974e3424fc22d');
+  s.prop38 = unescape('details%3Aassessor%3AOverview%7CUnregistered');
+  s.eVar25 = unescape('20160401');
+  s.eVar39 = unescape('NULL');
+  s.eVar40 = unescape('NULL');
+  s.eVar41 = unescape('NULL');
+  s_campaign = unescape('');
+
+if(typeof s !== "undefined" && typeof s === "object"){ 
+s.prop75="536:8217,547:8240";
+s.eVar73=s.prop75;
+}
+
+s_campaign = typeof s_campaign === 'undefined' ? '' : s_campaign;
+
+if (typeof s.doPlugins == 'function') {
+  s.doPlugins(s, s_campaign);
+}
+
+// _satellite is a global object generated by Adobe DTM. See for more info: https://marketing.adobe.com/resources/help/en_US/dtm/object_reference.html
+if ((typeof _satellite === 'undefined') || (_satellite.getDataElement("adobeDTMflag") === null)) {
+
+  if (typeof s.t == 'function') {
+    var s_code = s.t();
+    if (s_code) {
+      document.write(s_code);
+    }
+  }
+}
+
+
+
+
+  var utag_data = {"page_type":"pdp","page_name":"details:assessor:Overview","campaign":"","site_section":"Find Homes","server_code":"403","session_id":"37a1435adb27390f98c974e3424fc22d","cobrand_site":"cbs000","date_first_visit":"20160401","page_reg_status":"details:assessor:Overview|Unregistered","user_id":"16040137a1435adb27390f98c974e3424fc22d","user_type":"NULL","user_sub_type":"NULL","broker_id":"","property_id":3910533,"property_location":"CA,Los Angeles,Miracle Mile,90036","property_status":"Assessor|UnClaimedStatus|NonProStatus|UnBranded","property_address":"824-S-Ridgeley-Dr-Los-Angeles-CA-90036"};
+
+</script>
+
+  
+
+  
+  <script type="text/javascript" src="//tags.tiqcdn.com/utag/trulia/main/prod/utag.js" async></script>
+
+  <div class="hideVisually">
+  <div>	
+  <div id="session" style="display:none">16040137a1435adb27390f98c974e3424fc22d</div>
+  <img id="internal_tracking_pixel" src="http://origin-tracking.trulia.com/trackingPixel.gif?impSource=trulia&rsz=&type=det&lts=16040137a1435adb27390f98c974e3424fc22d&uid=&ts=1459531904&ptype=assessor&stype=overview&p1=3910533&s1=&f1=&st1=CA&locId=22637" width="1" height="1" alt="" />
+</div>
+
+  </div>
+
+  
+
+  
+
+
+<script>
+  
+  if (typeof _satellite !== 'undefined') {
+    _satellite.pageBottom();
+  }
+</script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"28d67b3a7a","applicationID":"5722248","transactionName":"ZANTYEFXXBIFVE1cDl1JckFAQl0MS2RWWQVjImF3XFhGEwtbVVATCVxUTFZVRxUBaFBbBVYe","queueTime":0,"applicationTime":306,"atts":"SEREFglNT01GVhsPGk4b","errorBeacon":"bam.nr-data.net","agent":""}</script>
+<!-- // --><script language='javascript' type='text/javascript'>
+<!--
+	document.write('<script src="/__ssobj/ard.png?6268641790870555738_1-1-'+(13091*111491+3222)+'&n=1'+'">\x3C/script\x3E');
+//-->
+<!-- // --></script>
+</body>
+</html>
+
+<!-- T:316.557884216 H:403 S:137926 M:21757952 P:22020096 -->
