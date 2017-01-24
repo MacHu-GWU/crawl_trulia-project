@@ -182,7 +182,7 @@ class HTMLParser(object):
         
         此函数只可能返回非空dict或是None。原理是从address_field
         """
-        soup = BS4(html)
+        soup = BS4(html, "html.parser")
         data = dict()
         
         # address, city, state, zipcode <--- this should always work
