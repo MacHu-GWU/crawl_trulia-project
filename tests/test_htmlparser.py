@@ -6,7 +6,7 @@ import pytest
 import webbrowser
 from pprint import pprint as ppt
 from crawl_trulia.urlencoder import urlencoder
-from crawl_trulia.htmlparser import htmlparser
+from crawl_trulia.htmlparser import htmlparser, validate
 from dataIO import js, textfile
 from crawlib.spider import spider
 
@@ -54,6 +54,7 @@ class TestHTMLParser:
             data = htmlparser.get_house_detail(html)
             print("{:=^100}".format(str(i+1).zfill(2)))
             js.pprint(data)
+            print(validate(data))
 
 
 if __name__ == "__main__":

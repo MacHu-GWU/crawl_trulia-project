@@ -9,6 +9,7 @@ is to create the request url based on your search.
 
 special_words = {
     "nw": "NW", "ne": "NE", "sw": "SW", "se": "SE",
+    "crossing": "Xing",
 }
 
 class UrlEncoder(object):
@@ -30,8 +31,8 @@ class UrlEncoder(object):
         chunks = [i.strip() for i in address.split(" ") if i.strip()]
         new_chunks = list()
         for word in chunks:
-            if word in special_words:
-                new_chunks.append(special_words[word])
+            if word.lower() in special_words:
+                new_chunks.append(special_words[word.lower()])
                 
             else:
                 char_list = list()

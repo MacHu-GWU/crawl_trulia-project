@@ -188,7 +188,7 @@ class HTMLParser(object):
         # address, city, state, zipcode <--- this should always work
         try:
             address_field = list()
-            h1 = soup.find("h1", itemprop = "address")
+            h1 = soup.find("h1", class_=["h6", "mtn", "ptn"])
             for span in h1.find_all("span"):
                 if span.string:
                     address_field.append(span.string.strip())
@@ -246,6 +246,23 @@ class HTMLParser(object):
 
 htmlparser = HTMLParser()
 
+
+def validate(data):
+    """Valdiate the result data.
+    """
+    if data is None:
+        return False
+    
+    errors = data.get("errors", dict())
+    features = data.get("features", dict())
+    public_records = data.get("public_records", dict())
+    
+    if len(features) or len(public_records):
+        return True
+    else:
+        return False
+
+
 def get_house_size_from_detail(data):
     """Find correct value of sqft from house detail data.
     """
@@ -289,6 +306,6 @@ if __name__ == "__main__":
     textfile.write(html, "page.html")
     
     # test
-    html = textfile.read(path)
+    html = textfile.read("page.html")
     data = htmlparser.get_house_detail(html)
     js.pprint(data)
