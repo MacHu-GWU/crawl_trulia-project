@@ -72,8 +72,20 @@ class UrlEncoder(object):
         address = address.replace(" ", "+").replace("#", "%23")
         return address
     
-    def format_search_string(self, address, zipcode):
-        search_str = "%s+%s" % (self.url_encode_address(address), self.format_zipcode(zipcode))
+    def url_encode_city(self, city):
+        city = self.format_address(city)
+        city = city.replace(" ", "+")
+        return city
+    
+    def format_search_string(self, address, city=None, zipcode=None):
+        """Basically, combination of address and zipcode is enough. But the
+        chance to match the address will be increased if with city.
+        """
+        search_str = self.url_encode_address(address)
+        if city:
+            search_str = search_str + "+" + self.url_encode_city(city)
+        if zipcode:
+            search_str = search_str + "+" + self.format_zipcode(zipcode)
         return search_str
     
     def by_search_str(self, search_str):
@@ -81,8 +93,17 @@ class UrlEncoder(object):
         return url
     
     def by_address_and_zipcode(self, address, zipcode):
-        search_str = self.format_search_string(address, zipcode)
+        """Given address and zipcode, create the trulia query url.
+        """
+        search_str = self.format_search_string(address, None, zipcode)
         url = self.search_url.format(search_str)
         return url
-
+    
+    def by_address_city_and_zipcode(self, address, city, zipcode):
+        """Given address, city and zipcode, create the trulia query url.
+        """
+        search_str = self.format_search_string(address, city, zipcode)
+        url = self.search_url.format(search_str)
+        return url
+    
 urlencoder = UrlEncoder()

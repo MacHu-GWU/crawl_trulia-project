@@ -292,13 +292,85 @@ def get_house_size_from_detail(data):
         return None
     
 
+def preprocess(raw_data):
+    """Preprocess raw data, get following data points:
+    
+    - sqft:
+    - bedroom:
+    - bathroom:
+    """
+    data = {"sqft": None, "bedroom": None, "bathroom": None}
+    
+    # sqft
+    try:
+        f_sqft = raw_data["features"]["sqft"]
+    except:
+        f_sqft = None
+
+    try:
+        p_sqft = raw_data["public_records"]["sqft"]
+    except:
+        p_sqft = None
+
+    if (f_sqft is None) and p_sqft:
+        data["sqft"] = p_sqft
+    elif f_sqft and (p_sqft is None):
+        data["sqft"] = f_sqft
+    elif f_sqft and p_sqft:
+        if f_sqft == p_sqft:
+            data["sqft"] = f_sqft
+        # 如果两者差异小于20%, 并且数值都大于400, 则取平均
+        elif (abs(f_sqft-p_sqft) * 1.0 / f_sqft) <= 0.2 and f_sqft >= 400 and p_sqft >= 400:
+            data["sqft"] = int(0.5 * (f_sqft + p_sqft))
+    
+    # bedroom
+    try:
+        f_bedroom = raw_data["features"]["bedroom"]
+    except:
+        f_bedroom = None
+
+    try:
+        p_bedroom = raw_data["public_records"]["bedroom"]
+    except:
+        p_bedroom = None
+
+    if (f_bedroom is None) and p_bedroom:
+        data["bedroom"] = p_bedroom
+    elif f_bedroom and (p_bedroom is None):
+        data["bedroom"] = f_bedroom
+    elif f_bedroom and p_bedroom:
+        if f_bedroom == p_bedroom:
+            data["bedroom"] = f_bedroom
+
+    # bathroom
+    try:
+        f_bathroom = raw_data["features"]["bathroom"]
+    except:
+        f_bathroom = None
+
+    try:
+        p_bathroom = raw_data["public_records"]["bathroom"]
+    except:
+        p_bathroom = None
+
+    if (f_bathroom is None) and p_bathroom:
+        data["bathroom"] = p_bathroom
+    elif f_bathroom and (p_bathroom is None):
+        data["bathroom"] = f_bathroom
+    elif f_bathroom and p_bathroom:
+        if f_bathroom == p_bathroom:
+            data["bathroom"] = f_bathroom
+    
+    return data
+
+
 if __name__ == "__main__":
     from crawl_trulia.urlencoder import urlencoder
     from crawlib.spider import spider
     from dataIO import js, textfile
     
-    address = None
-    zipcode = None
+    address = "19810 Falling Spring Ct"
+    zipcode = "20882"
     
     # download 
     url = urlencoder.by_address_and_zipcode(address, zipcode)
@@ -308,4 +380,5 @@ if __name__ == "__main__":
     # test
     html = textfile.read("page.html")
     data = htmlparser.get_house_detail(html)
-    js.pprint(data)
+    js.pprint(data)    
+    js.pprint(preprocess(data))
