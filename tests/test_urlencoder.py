@@ -3,7 +3,7 @@
 
 import pytest
 import webbrowser
-from crawl_trulia.urlencoder import urlencoder
+from crawl_trulia import trulia_urlencoder
 
 todo = [
     # raw address, formatted address, zipcode
@@ -15,11 +15,11 @@ class TestUrlEncoder:
 
     def test_format_address(self):
         for address, formatted, zipcode in todo:
-            assert urlencoder.format_address(address) == formatted
+            assert trulia_urlencoder.format_address(address) == formatted
 
     def test_by_address_and_zipcode(self):
         for address, formatted, zipcode in todo:
-            query_url = urlencoder.by_address_and_zipcode(address, zipcode)
+            query_url = trulia_urlencoder.by_address_and_zipcode(address, zipcode)
             webbrowser.open(query_url)
 
 if __name__ == "__main__":

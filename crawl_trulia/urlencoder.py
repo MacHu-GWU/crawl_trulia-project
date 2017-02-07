@@ -13,7 +13,7 @@ special_words = {
 }
 
 class UrlEncoder(object):
-    homepage = "http://www.trulia.com/"
+    domain = "http://www.trulia.com/"
     search_url = "https://www.trulia.com/submit_search/?display_select=for_sale&locationId=&locationType=&tst=h&ac_entered_query=&ac_index=&propertyId=&propertyIndex=&bedFilter=&bathFilter=&propertyFilter=&display=for+sale&search={0}" 
     
     def format_address(self, address):

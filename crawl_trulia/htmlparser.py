@@ -5,35 +5,15 @@
 This module is to parse html to get useful information from trulia.
 """
 
-from bs4 import BeautifulSoup as BS4
+try:
+    from .helpers import int_filter, float_filter
+    from .packages.crawlib.htmlparser import BaseHtmlParser
+except:
+    from crawl_trulia.helpers import int_filter, float_filter
+    from crawl_trulia.packages.crawlib.htmlparser import BaseHtmlParser
 
 
-class HTMLParser(object):
-    def _int_filter(self, text):
-        """Extract integer from text.
-        
-        **中文文档**
-        
-        摘除文本内的整数。
-        """
-        res = list()
-        for char in text:
-            if char.isdigit():
-                res.append(char)
-        return int("".join(res))
-
-    def _float_filter(self, text):
-        """Extract float from text.
-        
-        **中文文档**
-        
-        摘除文本内的小数。
-        """
-        res = list()
-        for char in text:
-            if (char.isdigit() or (char == ".")):
-                res.append(char)
-        return float("".join(res))
+class HTMLParser(BaseHtmlParser):
     
     def parse_house_details(self, public_records):
         """Parse label and value of house detail from text.
@@ -48,7 +28,7 @@ class HTMLParser(object):
             field = field.lower()
             # 价格
             if "price" in field:
-                results["price"] = self._int_filter(field)
+                results["price"] = int_filter(field)
             
             # 房子类别
             elif "single-family" in field:
@@ -62,27 +42,27 @@ class HTMLParser(object):
 
             # 面积
             elif ("sqft" in field) and ("lot size" not in field):
-                results["sqft"] = self._int_filter(field)
+                results["sqft"] = int_filter(field)
                 
             # 院子面积
             elif ("sqft" in field) and ("lot size" in field):
-                results["lot_size"] = self._int_filter(field)
+                results["lot_size"] = int_filter(field)
                 results["lot_size_unit"] = "sqft"
             elif ("acres" in field) and ("lot size" in field):
-                results["lot_size"] = self._float_filter(field)
+                results["lot_size"] = float_filter(field)
                 results["lot_size_unit"] = "acer"
                 
             # 卧室
             elif "bedroom" in field:
-                results["bedroom"] = self._int_filter(field)
+                results["bedroom"] = int_filter(field)
                 
             # 洗手间
             elif ("bathroom" in field) and ("partial" not in field):
-                results["bathroom"] = self._int_filter(field)
+                results["bathroom"] = int_filter(field)
 
             # 小洗手间
             elif "partial bathroom" in field:
-                results["partial_bathroom"] = self._int_filter(field)
+                results["partial_bathroom"] = int_filter(field)
 
             # 市场状态
             elif "status:" in field:
@@ -143,7 +123,7 @@ class HTMLParser(object):
             
             # 建造年份
             elif "built in" in field:
-                results["build_year"] = self._int_filter(field)
+                results["build_year"] = int_filter(field)
             
             # 风格
             elif "style:" in field:
@@ -182,7 +162,7 @@ class HTMLParser(object):
         
         此函数只可能返回非空dict或是None。原理是从address_field
         """
-        soup = BS4(html, "html.parser")
+        soup = self.get_soup(html)
         data = dict()
         
         # address, city, state, zipcode <--- this should always work
@@ -205,7 +185,7 @@ class HTMLParser(object):
         try:
             for span in soup.find_all("span", itemprop="price"):
                 try:
-                    data["price"] = self._int_filter(span.text)
+                    data["price"] = int_filter(span.text)
                 except:
                     pass
         except Exception as e:

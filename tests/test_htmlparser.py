@@ -5,10 +5,10 @@ import os
 import pytest
 import webbrowser
 from pprint import pprint as ppt
-from crawl_trulia.urlencoder import urlencoder
-from crawl_trulia.htmlparser import htmlparser, validate
 from dataIO import js, textfile
-from crawlib.spider import spider
+from crawl_trulia import trulia_urlencoder, trulia_htmlparser
+from crawl_trulia.htmlparser import validate
+from crawl_trulia.packages.crawlib.spider import spider
 
 
 def get_testdata():
@@ -38,7 +38,7 @@ def get_testdata():
         filename = os.path.join(
             "testdata", "%s.html" % address.replace(" ", "-"))
         if not os.path.exists(filename):
-            url = urlencoder.by_address_and_zipcode(address, zipcode)
+            url = trulia_urlencoder.by_address_and_zipcode(address, zipcode)
             html = spider.get_html(url=url)
             textfile.write(html, filename)
 
@@ -51,7 +51,7 @@ class TestHTMLParser:
         for i, fname in enumerate(os.listdir("testdata")):
             path = os.path.join("testdata", fname)
             html = textfile.read(path)
-            data = htmlparser.get_house_detail(html)
+            data = trulia_htmlparser.get_house_detail(html)
             print("{:=^100}".format(str(i+1).zfill(2)))
             js.pprint(data)
             print(validate(data))
